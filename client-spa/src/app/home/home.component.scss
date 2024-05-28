@@ -1,0 +1,12 @@
+.s-header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000; /* Adjust the z-index to ensure the navbar is above other content */
+    background-color: #1e1e1e; /* Set the background color of the navbar if needed */
+    /* Add any other styles you want for the navbar */
+}
+
+.s-header__nav ul li a {
+    cursor: pointer;
+}
