@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .navbarx {
+    background-color: #333;
+    padding: 10px 0;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+  }
+  
+  .navbarx ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .navbarx li {
+    margin: 0 15px;
+  }
+  
+  .navbarx a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+  }
+  
+  .navbarx a:hover {
+    background-color: #555;
+  }
+  

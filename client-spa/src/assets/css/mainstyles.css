@@ -3445,7 +3445,7 @@ input[type="button"].btn--primary:focus {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
+    width: 10px;
     height: 100%;
     background-image: url(../images/header-bg-3000.jpg);
     background-repeat: no-repeat;
@@ -3777,9 +3777,10 @@ input[type="button"].btn--primary:focus {
 .s-about {
     --color-border: var(--color-gray-16);
     background-color: var(--color-gray-17);
-    padding-top: calc(6 * var(--space));
+    padding-top: calc(4 * var(--space));
     padding-bottom: var(--vspace-4);
     color: rgba(255, 255, 255, 0.4);
+    margin-top: -20px;
 }
 
 .s-about h3 {
