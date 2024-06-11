@@ -3567,9 +3567,7 @@ input[type="button"].btn--primary:focus {
     margin-right: 0;
 }
 
-/* ------------------------------------------------------------------- 
- * ## hero scrolldown
- * ------------------------------------------------------------------- */
+
 .s-hero__scroll {
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
@@ -3641,9 +3639,7 @@ input[type="button"].btn--primary:focus {
     left: 0;
 }
 
-/* -------------------------------------------------------------------
- * ## animate hero content
- * ------------------------------------------------------------------- */
+
 .ss-preload .s-header, 
 .ss-preload .s-hero {
     visibility: hidden;
@@ -3668,10 +3664,8 @@ input[type="button"].btn--primary:focus {
     animation-fill-mode: both;
 }
 
-/* ------------------------------------------------------------------- 
- * responsive:
- * hero
- * ------------------------------------------------------------------- */
+
+
 @media screen and (max-width: 1600px) {
     .s-hero__content h1 {
         font-size: 9.4rem;
@@ -3770,10 +3764,6 @@ input[type="button"].btn--primary:focus {
 }
 
 
-/* ===================================================================
- * # about
- *
- * ------------------------------------------------------------------- */
 .s-about {
     --color-border: var(--color-gray-16);
     background-color: var(--color-gray-17);
@@ -3835,10 +3825,6 @@ input[type="button"].btn--primary:focus {
     fill: white;
 }
 
-/* ------------------------------------------------------------------- 
- * responsive:
- * about
- * ------------------------------------------------------------------- */
 @media screen and (max-width: 1200px) {
     .s-about__pic {
         width: var(--vspace-4_5);
@@ -3878,10 +3864,7 @@ input[type="button"].btn--primary:focus {
 }
 
 
-/* ===================================================================
- * # resume 
- *
- * ------------------------------------------------------------------- */
+
 .s-resume {
     background-color: white;
     padding-top: calc(6 * var(--space));
@@ -3900,9 +3883,6 @@ input[type="button"].btn--primary:focus {
     margin-bottom: 0;
 }
 
-/* ------------------------------------------------------------------- 
- * ## resume block
- * ------------------------------------------------------------------- */
 .resume-block {
     margin-bottom: var(--vspace-1_75);
 }
@@ -3942,10 +3922,6 @@ input[type="button"].btn--primary:focus {
     margin-right: .2rem;
 }
 
-/* ------------------------------------------------------------------- 
- * responsive:
- * resume
- * ------------------------------------------------------------------- */
 @media screen and (max-width: 800px) {
     .s-resume {
         padding-top: var(--vspace-4);
@@ -3956,10 +3932,6 @@ input[type="button"].btn--primary:focus {
 }
 
 
-/* ===================================================================
- * # portfolio
- *
- * ------------------------------------------------------------------- */
 .s-portfolio {
     background-color: var(--color-gray-1);
     padding-top: calc(6 * var(--space));
@@ -3974,9 +3946,7 @@ input[type="button"].btn--primary:focus {
     text-align: center;
 }
 
-/* ------------------------------------------------------------------- 
- * ## portfolio list
- * ------------------------------------------------------------------- */
+
 .folio-list {
     max-width: 1180px;
     margin-top: var(--vspace-2_5);
@@ -4039,8 +4009,6 @@ input[type="button"].btn--primary:focus {
     transition: all, .5s;
 }
 
-/* on hover
- *---------------------------------------------- */
 .folio-item:hover .folio-item__thumb::before {
     opacity: 1;
     visibility: visible;
@@ -4058,9 +4026,7 @@ input[type="button"].btn--primary:focus {
     transform: scale(1.05);
 }
 
-/* ------------------------------------------------------------------- 
- * ## modal popup
- * ------------------------------------------------------------------- */
+
 .modal-popup {
     max-width: 680px;
     background-color: white;
@@ -4140,10 +4106,7 @@ input[type="button"].btn--primary:focus {
 }
 
 
-/* ===================================================================
- * # CTA
- *
- * ------------------------------------------------------------------- */
+
 .s-cta {
     background-color: var(--color-gray-1);
     padding-top: var(--vspace-2_5);
@@ -4181,10 +4144,7 @@ input[type="button"].btn--primary:focus {
     max-width: 600px;
 }
 
-/* ------------------------------------------------------------------- 
- * responsive:
- * cta
- * ------------------------------------------------------------------- */
+
 @media screen and (max-width: 800px) {
     .s-cta {
         font-size: var(--text-md);
@@ -4214,11 +4174,6 @@ input[type="button"].btn--primary:focus {
     }
 }
 
-
-/* ===================================================================
- * # testimonials
- *
- * ------------------------------------------------------------------- */
 .s-testimonials {
     padding-top: var(--vspace-5);
     padding-bottom: var(--vspace-3_5);
@@ -4276,9 +4231,7 @@ input[type="button"].btn--primary:focus {
     min-width: 0;
 }
 
-/* ------------------------------------------------------------------- 
- * ## swiper style overrides
- * ------------------------------------------------------------------- */
+
 .s-testimonials .swiper-container {
     padding-bottom: var(--vspace-2_5);
 }
@@ -4299,9 +4252,7 @@ input[type="button"].btn--primary:focus {
     opacity: 1;
 }
 
-/* ------------------------------------------------------------------- 
- * ## testimonial slider 
- * ------------------------------------------------------------------- */
+
 .testimonial-slider {
     position: relative;
 }
@@ -4357,10 +4308,7 @@ input[type="button"].btn--primary:focus {
     color: rgba(255, 255, 255, 0.6);
 }
 
-/* ------------------------------------------------------------------- 
- * responsive:
- * testimonials
- * ------------------------------------------------------------------- */
+
 @media screen and (max-width: 800px) {
     .testimonial-slider__slide {
         text-align: center;
@@ -4388,10 +4336,7 @@ input[type="button"].btn--primary:focus {
 }
 
 
-/* ===================================================================
- * # contact
- *
- * ------------------------------------------------------------------- */
+
 .s-contact {
     background-color: var(--color-gray-18);
     padding-top: calc(6 * var(--space));
@@ -4415,9 +4360,7 @@ input[type="button"].btn--primary:focus {
     margin-left: auto;
 }
 
-/* ------------------------------------------------------------------- 
- * ## contact block
- * ------------------------------------------------------------------- */
+
 .contact-infos .btn {
     margin-top: var(--vspace-0_75);
 }
@@ -4444,10 +4387,7 @@ input[type="button"].btn--primary:focus {
     margin-bottom: .2rem;
 }
 
-/* ------------------------------------------------------------------- 
- * responsive:
- * contact
- * ------------------------------------------------------------------- */
+
 @media screen and (max-width: 1200px) {
     .s-contact {
         padding-bottom: var(--vspace-2);
@@ -4503,10 +4443,6 @@ input[type="button"].btn--primary:focus {
 }
 
 
-/* ===================================================================
- * # footer
- *
- * ------------------------------------------------------------------- */
 .s-footer {
     background-color: var(--color-gray-18);
     padding-top: var(--vspace-1);
@@ -4528,9 +4464,6 @@ input[type="button"].btn--primary:focus {
     color: var(--color-2);
 }
 
-/* ------------------------------------------------------------------- 
- * ## footer social
- * ------------------------------------------------------------------- */
 .s-footer__social {
     list-style: none;
     font-size: var(--text-lg);
@@ -4560,9 +4493,6 @@ input[type="button"].btn--primary:focus {
     margin-right: 1.6rem;
 }
 
-/* ------------------------------------------------------------------- 
- * ## copyright
- * ------------------------------------------------------------------- */
 .ss-copyright {
     z-index: 2;
     -ms-flex-order: -1;
@@ -4588,9 +4518,7 @@ input[type="button"].btn--primary:focus {
     display: none;
 }
 
-/* ------------------------------------------------------------------- 
- * ## go top
- * ------------------------------------------------------------------- */
+
 .ss-go-top {
     z-index: 2;
     opacity: 0;
@@ -4646,10 +4574,7 @@ input[type="button"].btn--primary:focus {
     transform: translate(0, 0);
 }
 
-/* ------------------------------------------------------------------- 
- * responsive:
- * footer
- * ------------------------------------------------------------------- */
+
 @media screen and (max-width: 1200px) {
     .s-footer {
         padding-bottom: var(--vspace-2_5);

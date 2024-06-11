@@ -1,20 +1,20 @@
-
-
-<!-- <div id="preloader">
-    <div id="loader"></div>
-</div>  -->
-
-<div class="container">
-    <div class="navbarx">
+<!-- src/app/app.component.html -->
+<div class="content-wrapper">
+  <header>
+    <nav class="top-nav">
       <ul>
-        <li><a routerLink="/">Home</a></li>
-        <li><a routerLink="/about">About</a></li>
-        <li><a routerLink="/contact">Contact</a></li>
+        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
+        <li><a routerLink="/resume" routerLinkActive="active">Resume</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
       </ul>
-    </div>
-    
-    <div class="content">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  
+    </nav>
+  </header>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</div>
+
+<footer>
+  <p>&copy; 2024 My Website</p>
+</footer>

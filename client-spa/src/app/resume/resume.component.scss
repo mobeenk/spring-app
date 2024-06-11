@@ -1,0 +1,78 @@
+/* src/app/resume/resume.component.css */
+
+.resume-container {
+    display: flex;
+    position: relative;
+  }
+  
+  .menu-toggle {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .side-menu {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    transition: transform 0.3s ease;
+    z-index: 5;
+  }
+  
+  .side-menu.collapsed {
+    transform: translateX(-100%);
+  }
+  
+  .side-menu ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+  }
+  
+  .side-menu ul li {
+    margin: 10px 0;
+  }
+  
+  .side-menu ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+  }
+  
+  .side-menu ul li a:hover {
+    text-decoration: underline;
+  }
+  
+  .resume-content {
+    margin-left: 260px; /* width of side-menu + padding */
+    padding: 20px;
+    flex: 1;
+    transition: margin-left 0.3s ease;
+  }
+  
+  .resume-content.menu-collapsed {
+    margin-left: 40px;
+  }
+  
+  .resume-content section {
+    margin-bottom: 40px;
+  }
+  
+  .resume-content section h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .resume-content section p {
+    font-size: 18px;
+  }
+  

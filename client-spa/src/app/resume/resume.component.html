@@ -1,0 +1,41 @@
+<!-- src/app/resume/resume.component.html -->
+<div class="resume-container">
+    <button class="menu-toggle" (click)="toggleMenu()">☰</button>
+    <nav class="side-menu" [class.collapsed]="menuCollapsed">
+      <ul>
+        <li><a href="#about">About Me</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+      </ul>
+    </nav>
+  
+    <main class="resume-content" [class.menu-collapsed]="menuCollapsed">
+      <section id="about">
+        <h2>About Me</h2>
+        <p>Information about you...</p>
+      </section>
+  
+      <section id="experience">
+        <h2>Experience</h2>
+        <p>Your professional experience...</p>
+      </section>
+  
+      <section id="education">
+        <h2>Education</h2>
+        <p>Your educational background...</p>
+      </section>
+  
+      <section id="skills">
+        <h2>Skills</h2>
+        <p>Your skills...</p>
+      </section>
+  
+      <section id="projects">
+        <h2>Projects</h2>
+        <p>Details about your projects...</p>
+      </section>
+    </main>
+  </div>
+  
