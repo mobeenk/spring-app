@@ -3,9 +3,13 @@
   <header>
     <nav class="top-nav">
       <ul>
-        <li><a routerLink="/home" routerLinkActive="active">Home</a></li>
-        <li><a routerLink="/resume" routerLinkActive="active">Resume</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+        <li><a routerLink="/home" routerLinkActive="active">{{ 'HOME'  | translate}}</a></li>
+        <li><a routerLink="/resume" routerLinkActive="active">{{ 'RESUME' | translate }}</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">{{ 'CONTACT' | translate }}</a></li>
+        <li>
+          <button (click)="switchLanguage('en')">English</button>
+          <button (click)="switchLanguage('ar')">العربية</button>
+        </li>
       </ul>
     </nav>
   </header>
