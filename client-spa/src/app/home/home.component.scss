@@ -1,58 +1,36 @@
+
+  $dim:220px;
+
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
 }
-.sidebar:hover {
-  left: 0;
-}
 
-.container {
+.home-content {
   display: flex;
-}
-
-.sidebar {
-  height: 100%;
-  width: 250px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #333;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
-
-.sidebar-header {
-  padding: 10px;
+  height: 100vh;
+  background-image: url(/assets/images/header-bg-3000.jpg); /* Add your background image path here */
+  background-size: stretch;
+  background-position: left; /* Align the right edge of the image to the right side */
+  flex-direction: column;
   text-align: center;
+  font-size: 35px;
   color: #fff;
+  .head {
+    margin-top: 80px;
+  }
+  .desc {
+    margin-top: 50px;
+    margin-right: $dim;
+    margin-left: $dim;
+  }
+  .btn-scroll {
+    margin-top: 90px;
+    margin-bottom: 0px;
+  }
 }
 
-.sidebar-menu {
-  list-style: none;
-  padding-top: 15px;
-}
-
-.sidebar-menu li {
-  margin-bottom: 10px;
-}
-
-.sidebar-menu a {
-  display: block;
-  padding: 10px;
-  color: #fff;
-  text-decoration: none;
-  transition: background-color 0.3s;
-}
-
-.sidebar-menu a:hover {
-  background-color: #555;
-}
-
-.main-content {
-  margin-left: 250px; /* Same as the width of the sidebar */
-  width: calc(100% - 50px); /* Subtract the width of the sidebar from the total width */
-  // padding: 20px;
-}
 
 .hero-section2 {
   position: relative;
@@ -69,102 +47,3 @@ body {
   font-size: 25px;
 }
 
-
-
-// .hero-section2::before {
-//   content: '';
-//   position: absolute;
-//   top: 0;
-//   left: 0; /* Aligns the overlay to the left */
-//   width: 100%;
-//   height: 100%;
-//   background: rgba(0, 0, 0, 0.5); /* Adds a dark overlay for better text visibility */
-//   z-index: 1;
-// }
-
-.hero-section {
-  position: relative;
-  height: 100vh; /* Adjust this if needed */
-  background-image: url(/assets/images/header-bg-3000.jpg); /* Add your background image path here */
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: #fff;
-  padding: 20px;
-  font-size: 25px;
-}
-
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Adds a dark overlay for better text visibility */
-  z-index: 1;
-}
-
-.hero-section .row {
-  width: 100%;
-}
-
-
-.hero-section .content {
-  // max-width: 800px; /* Adjust this value if needed */
-  margin: 0 auto;
-  z-index: 2;
-}
-.hero-section h1 {
-  color: #fff;
-  margin: 0;
-  font-size: 3em;
-  line-height: 1.2;
-}
-
-.hero-section h3 {
-  color: #fff;
-  font-size: 1.5em;
-  line-height: 1.5;
-}
-
-.hero-section h1, .hero-section h3 {
-  position: relative;
-  z-index: 2;
-}
-
-.hero-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Adds a dark overlay for better text visibility */
-  z-index: 1;
-}
-
-.hero-section a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.hero-section span {
-  font-weight: bold;
-  color: #f39c12; /* Highlight color for the span elements */
-}
-// .cite-card {
-//   display: flex;
-//   justify-content: flex-start;
-//   text-align: left;
-// }
-
-.testimonal-title {
-  font-size:  35px;
-  font-weight: bold;
-  margin-top:70px;
-  margin-bottom: 70px;
-}

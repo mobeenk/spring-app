@@ -1,18 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { I18nService } from '../services/i18n.service';
 import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BrowserModule } from '@angular/platform-browser';
+import { faHippo } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-resume',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule,FontAwesomeModule],
   templateUrl: './resume.component.html',
   styleUrl: './resume.component.scss'
 })
-export class ResumeComponent {
+export class ResumeComponent implements OnInit{
   menuCollapsed = false;
-
+  faCoffee = faHippo;
   constructor(public i18nService: I18nService) {}
+  ngOnInit(): void {
+     this.initStyle()
+  }
+
+
   toggleMenu() {
     this.menuCollapsed = !this.menuCollapsed;
   }
@@ -36,5 +44,19 @@ export class ResumeComponent {
       'ltr': this.i18nService.currentDirection === 'ltr',
       'rtl': this.i18nService.currentDirection === 'rtl',
     };
+  }
+  initStyle() {
+
+    let dir =  this.i18nService.currentDirection;
+    const resumeContent = document.querySelector('.resume-content') as HTMLElement;
+    if (resumeContent) {
+      if (dir === 'rtl') {
+        resumeContent.style.marginRight = '260px';
+        resumeContent.style.marginLeft = '0px';
+      } else {
+        resumeContent.style.marginLeft = '260px'; // or whatever your original value is
+        resumeContent.style.marginRight = '0px';
+      }
+    }
   }
 }

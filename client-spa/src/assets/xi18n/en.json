@@ -6,6 +6,9 @@
     "EXPERIENCE": "Experience",
     "EDUCATION": "Education",
     "SKILLS": "Skills",
-    "PROJECTS": "Projects"
+    "PROJECTS": "Projects",
+    "MyName":"I'm Moubien Kayali",
+    "home_desc": "Hello! I' a Full Stack Developer and private teacher, specializing in crafting dynamic web applications. I'm dedicated to delivering seamless user experiences and robust backend solutions. With expertise in HTML, CSS, JavaScript, Angular, Node.js, Python, and more, I help businesses and individuals efficiently and creatively.",
+    "scrolldown":"Scroll Down"
   }
   
