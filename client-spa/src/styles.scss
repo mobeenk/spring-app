@@ -1,3 +1,7 @@
+:root{
+  --photo-radius: 140px;
+}
+
 /* src/styles.css */
 
 /* Basic Reset */
@@ -33,33 +37,7 @@
     padding: 20px;
   }
   
-  /* Top Navigation Bar */
-  .top-nav {
-    background-color: #333;
-    color: #fff;
-    padding: 10px 0;
-  }
-  
-  .top-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-  }
-  
-  .top-nav ul li {
-    margin: 0 15px;
-  }
-  
-  .top-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  .top-nav ul li a:hover,
-  .top-nav ul li a.active {
-    text-decoration: underline;
-  }
+
   
   /* Section Styling */
   section {
@@ -82,4 +60,43 @@
     background-color: #333;
     color: #fff;
   }
+
+  // about_me photo
+
+  .about_photo  {
+    width: var(--photo-radius);
+    height: var(--photo-radius);
+    overflow: hidden; 
+    margin-top: auto;
+    // border: 1.6rem solid rgba(255, 255, 255, .02);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    
+  }
+
+  .about_photo img {
+    width: 100%; /* Make the image take the full width of the container */
+    height: 100%; /* Ensure the image covers the container */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+    display: block; /* Ensure the image behaves as a block element */
+  }
+
+  .btn-download {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff8800;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+    // border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-download:hover {
+    background-color: #b35700;
+  }
+  
   

@@ -1,20 +1,44 @@
 <!-- src/app/resume/resume.component.html -->
 <div class="resume-container">
     <button class="menu-toggle" (click)="toggleMenu()">☰</button>
-    <nav class="side-menu" [class.collapsed]="menuCollapsed">
+    <nav class="side-menu" [ngClass]="menuClasses" >
       <ul>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#projects">Projects</a></li>
+        <li><a (click)="scrollToSection('about')">About Me</a></li>
+        <li><a (click)="scrollToSection('experience')">Experience</a></li>
+        <li><a (click)="scrollToSection('education')">Education</a></li>
+        <li><a (click)="scrollToSection('skills')">Skills</a></li>
+        <li><a (click)="scrollToSection('projects')">Projects</a></li>
       </ul>
     </nav>
   
     <main class="resume-content" [class.menu-collapsed]="menuCollapsed">
       <section id="about">
-        <h2>About Me</h2>
-        <p>Information about you...</p>
+        <div class="about_content">
+          <div class="about_photo">
+            <img src="assets/images/avatars/me.jpg">
+          </div>
+          <div class="about_me">
+            <h2>About Me</h2>
+            <p>A passionate Full Stack Developer with a diverse skill set and a strong commitment to delivering high-quality,cations.</p>
+            <p>On the front-end, I specialize in Angular, creating dynamic and responsive user interfaces that provide seamless user experiences. My proficiency in HTML, CSS, and JavaScript allows me to craft intuitive and visually appealing web applications.</p>
+            <p>On the back-end, I am well-versed in Python and the .NET framework, including both .NET Core and .NET Framework. I have a deep understanding of building robust server-side applications and RESTful APIs. My work with databases spans SQL and NoSQL solutionss.</p>
+          </div>
+          <div class="contact_details">
+            <p>
+              <strong>Moubien Kayali</strong><br>
+              Saudi Arabia - Riyadh<br>
+              +966 54 255 1520<br>
+              <a href="mailto:mobeen-k@hotmail.com">mobeen-k&#64;hotmail.com</a>
+            </p>
+          </div>
+          <div class="download_resume">
+            <a href="assets/resume/moubien_kayali_cv.pdf" download class="btn-download">Download CV</a>
+          </div>
+          
+        </div>
+        
+      
+     
       </section>
   
       <section id="experience">

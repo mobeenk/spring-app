@@ -4,19 +4,28 @@
     display: flex;
     position: relative;
   }
-  
+
   .menu-toggle {
-    position: absolute;
-    top: 10px;
-    left: 10px;
+    position: fixed;
+    // top: 10px;
     z-index: 10;
     background-color: #333;
     color: #fff;
     border: none;
     padding: 10px;
     cursor: pointer;
+
+  }
+  .menu-toggle.ltr {
+    left: 10px;
+    right: auto;
   }
   
+  .menu-toggle.rtl {
+    right: 10px;
+    left: auto;
+  }
+
   .side-menu {
     width: 200px;
     background-color: #333;
@@ -26,10 +35,17 @@
     position: fixed;
     transition: transform 0.3s ease;
     z-index: 5;
+    margin-top: -50px;
+    padding-top: 50px;
+    cursor: pointer;
   }
   
-  .side-menu.collapsed {
+  .side-menu.collapsed-ltr {
     transform: translateX(-100%);
+  }
+  
+  .side-menu.collapsed-rtl {
+    transform: translateX(100%);
   }
   
   .side-menu ul {
@@ -75,4 +91,35 @@
   .resume-content section p {
     font-size: 18px;
   }
+  
+
+
+  .about_content {  
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 0.4fr 0.7fr 0.8fr 0.6fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    // gap: 10px 10px;
+    column-gap: 20px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "about_photo about_me about_me ."
+      ". about_me about_me ."
+      ". contact_details download_resume .";
+  }
+  
+  .about_photo { 
+    grid-area: about_photo;
+    margin-top: 30px;
+    justify-self: center; /* Aligns item to the end (right) within its grid cell */
+    // align-self: end; /* Aligns item to the bottom within its grid cell */
+  }
+  
+  .about_me { grid-area: about_me;
+     p {
+      margin-bottom: 30px; /* Example spacing */
+    }
+  }
+  .contact_details { grid-area: contact_details; align-self: end; }
+  .download_resume { grid-area: download_resume;margin-top: auto; align-self: end; }
   

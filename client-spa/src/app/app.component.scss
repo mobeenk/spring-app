@@ -10,33 +10,32 @@
     height: 100vh;
   }
   
-  .navbarx {
+  /* Top Navigation Bar */
+  .top-nav {
+    // position: fixed;
+    // width: 100%;
     background-color: #333;
+    color: #fff;
     padding: 10px 0;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
   }
   
-  .navbarx ul {
+  .top-nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
   }
   
-  .navbarx li {
+  .top-nav ul li {
     margin: 0 15px;
   }
   
-  .navbarx a {
-    color: white;
+  .top-nav ul li a {
+    color: #fff;
     text-decoration: none;
-    padding: 10px 20px;
+    font-size: 18px;
   }
   
-  .navbarx a:hover {
-    background-color: #555;
+  .top-nav ul li a:hover,
+  .top-nav ul li a.active {
+    text-decoration: underline;
   }
-  
