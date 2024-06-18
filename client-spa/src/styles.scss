@@ -1,6 +1,7 @@
 :root{
   --photo-radius: 140px;
   --color-orange-1: hsla(24, 100%, 47%, 1);
+--color-orange-title :  #e9913f;
 }
 
 
@@ -27,12 +28,7 @@
     color: #333;
   }
   
-  /* Flexbox wrapper to push footer to bottom */
-  .content-wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
+
   
   main {
     flex: 1;
@@ -41,20 +37,12 @@
   
 
   
-  /* Section Styling */
+  // /* Section Styling */
   section {
     margin-bottom: 40px;
   }
   
-  section h1 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  section p {
-    font-size: 18px;
-  }
-  
+
   /* Footer */
   footer {
     text-align: center;

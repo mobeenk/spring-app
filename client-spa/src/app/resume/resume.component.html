@@ -10,15 +10,17 @@
         <li><a (click)="scrollToSection('projects')">Projects</a></li>
       </ul>
     </nav>
+    <!-- [class.menu-collapsed]="menuCollapsed" -->
+    <main class="resume-content" >
   
-    <main class="resume-content" [class.menu-collapsed]="menuCollapsed">
-      <section id="about">
+      <div id="about">
+        <h2>About Me</h2>
         <div class="about_content">
           <div class="about_photo">
             <img src="assets/images/avatars/me.jpg">
           </div>
           <div class="about_me">
-            <h2>About Me</h2>
+          
             <p>A passionate Full Stack Developer with a diverse skill set and a strong commitment to delivering high-quality,cations.</p>
             <p>On the front-end, I specialize in Angular, creating dynamic and responsive user interfaces that provide seamless user experiences. My proficiency in HTML, CSS, and JavaScript allows me to craft intuitive and visually appealing web applications.</p>
             <p>On the back-end, I am well-versed in Python and the .NET framework, including both .NET Core and .NET Framework. I have a deep understanding of building robust server-side applications and RESTful APIs. My work with databases spans SQL and NoSQL solutionss.</p>
@@ -36,33 +38,30 @@
           </div>
           
         </div>
-        
-      
-     
-      </section>
+      </div>
   
-      <section id="experience">
+      <div id="experience">
         <h2>Experience</h2>
         <!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
 
        
         <p>Your professional experience...</p>
-      </section>
+      </div>
   
-      <section id="education">
+      <div id="education">
         <h2>Education</h2>
         <p>Your educational background...</p>
-      </section>
+      </div>
   
-      <section id="skills">
+      <div id="skills">
         <h2>Skills</h2>
         <p>Your skills...</p>
-      </section>
+      </div>
   
-      <section id="projects">
+      <div id="projects">
         <h2>Projects</h2>
         <p>Details about your projects...</p>
-      </section>
+      </div>
     </main>
   </div>
   

@@ -39,24 +39,20 @@ export class ResumeComponent implements OnInit{
       'collapsed-rtl': this.menuCollapsed && this.i18nService.currentDirection === 'rtl',
     };
   }
-  get toggleButtonClasses() {
-    return {
-      'ltr': this.i18nService.currentDirection === 'ltr',
-      'rtl': this.i18nService.currentDirection === 'rtl',
-    };
-  }
-  initStyle() {
 
+  initStyle() {
+    let isSideMenuEnabled = this.i18nService.screenWidth <= 420
     let dir =  this.i18nService.currentDirection;
     const resumeContent = document.querySelector('.resume-content') as HTMLElement;
     if (resumeContent) {
-      if (dir === 'rtl') {
+      if (dir === 'rtl' && !isSideMenuEnabled) {
         resumeContent.style.marginRight = '260px';
         resumeContent.style.marginLeft = '0px';
-      } else {
+      } else  if (dir === 'ltr' && !isSideMenuEnabled) {
         resumeContent.style.marginLeft = '260px'; // or whatever your original value is
         resumeContent.style.marginRight = '0px';
       }
     }
+
   }
 }

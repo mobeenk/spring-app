@@ -32,18 +32,34 @@ body {
 }
 
 
-.hero-section2 {
-  position: relative;
-  height: 100vh; /* Adjust this if needed */
-  background-image: url(/assets/images/testimonials-bg-3000.jpg); /* Add your background image path here */
-  background-size: stretch;
-  background-position: left; /* Align the right edge of the image to the right side */
-  display: flex;
-  justify-content: flex-start; /* Align content to the left */
-  align-items: flex-start;
-  text-align: left;
-  color: #fff;
-  padding: 20px;
-  font-size: 25px;
+@media only screen and (max-width: 420px) and (orientation: portrait) {
+  /* Your styles for the .home-content class on small screens */
+  .home-content {
+    font-size: 20px; /* Example: Adjust font size for smaller screens */
+    .desc {
+      margin-top: 50px;
+      margin-right: 0px;
+      margin-left: 0px;
+    }
+    /* Add other styles as needed */
+  }
 }
+
+
+
+
+// .hero-section2 {
+//   position: relative;
+//   height: 100vh; /* Adjust this if needed */
+//   background-image: url(/assets/images/testimonials-bg-3000.jpg); /* Add your background image path here */
+//   background-size: stretch;
+//   background-position: left; /* Align the right edge of the image to the right side */
+//   display: flex;
+//   justify-content: flex-start; /* Align content to the left */
+//   align-items: flex-start;
+//   text-align: left;
+//   color: #fff;
+//   padding: 20px;
+//   font-size: 25px;
+// }
 

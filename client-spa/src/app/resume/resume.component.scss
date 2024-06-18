@@ -14,17 +14,16 @@
     border: none;
     padding: 10px;
     cursor: pointer;
+    &.ltr {
+      left: 10px;
+      right: auto;
+    }
+    &.rtl {
+      right: 10px;
+      left: auto;
+    }
+  }
 
-  }
-  .menu-toggle.ltr {
-    left: 10px;
-    right: auto;
-  }
-  
-  .menu-toggle.rtl {
-    right: 10px;
-    left: auto;
-  }
 
   .side-menu {
     width: 200px;
@@ -38,74 +37,59 @@
     margin-top: -50px;
     padding-top: 50px;
     cursor: pointer;
+    &.collapsed-ltr {
+      transform: translateX(-100%);
+    }
+    &.collapsed-rtl {
+      transform: translateX(100%);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 40px;
+      li {
+        margin: 10px 0;
+        a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 18px;
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+      
+    }
+  }
+
+  @media only screen  and (max-width: 420px) and (orientation: portrait) {
+    .side-menu, .menu-toggle {
+      display: none;
+    }
+    .resume-content {
+      margin-left: -10px;
+    }
+
   }
   
-  .side-menu.collapsed-ltr {
-    transform: translateX(-100%);
-  }
-  
-  .side-menu.collapsed-rtl {
-    transform: translateX(100%);
-  }
-  
-  .side-menu ul {
-    list-style: none;
-    padding: 0;
-    margin-top: 40px;
-  }
-  
-  .side-menu ul li {
-    margin: 10px 0;
-  }
-  
-  .side-menu ul li a {
-    color: #fff;
-    text-decoration: none;
-    font-size: 18px;
-  }
-  
-  .side-menu ul li a:hover {
-    text-decoration: underline;
-  }
-  
-  // .resume-content {
-    // margin-left: 260px; /* width of side-menu + padding */
-    // padding: 20px;
-    // flex: 1;
-    // transition: margin-left 0.3s ease;
-  // }
-  
-  // .resume-content.menu-collapsed {
-  //   margin-left: 40px;
-  // }
-  
-  // .resume-content section {
-  //   margin-bottom: 40px;
-  // }
-  
-  // .resume-content section h2 {
-  //   font-size: 24px;
-  //   margin-bottom: 10px;
-  // }
-  
-  // .resume-content section p {
-  //   font-size: 18px;
-  // }
+
   
 
 
+  // resume-content
   .about_content {  
     margin-top: 50px;
     display: grid;
-    grid-template-columns: 0.4fr 0.7fr 0.8fr 0.6fr;
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 0.3fr 0.7fr 0.8fr 0.6fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     // gap: 10px 10px;
     column-gap: 20px;
     grid-auto-flow: row;
     grid-template-areas:
       "about_photo about_me about_me ."
       ". about_me about_me ."
-      ". contact_details download_resume .";
+      ". contact_details download_resume ."
+      ". . . .";
   }
   
   .about_photo { 
@@ -121,5 +105,25 @@
     }
   }
   .contact_details { grid-area: contact_details; align-self: end; }
-  .download_resume { grid-area: download_resume;margin-top: auto; align-self: end; }
+  .download_resume { grid-area: download_resume; margin-top: auto; align-self: end; }
+
+  .resume-content h2 {
+    display: inline-block;
+    border-bottom :3px solid var(--color-orange-title);
+  }
+
+  @media only screen  and (max-width: 420px) and (orientation: portrait) {
+     .about_content {
+      font-size:11px;
+    }
+    .resume-content {
+      margin-left: -10px;
+    }
+    .about_photo {
+      // width: 100%; /* Reduce image width by 50% */
+      // object-fit: cover; /* Maintain aspect ratio with cropping */
+      transform: scale(0.6); /* Scale image down to 50% */
+    }
+
+  }
   
