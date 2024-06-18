@@ -7,12 +7,13 @@
         <li><a (click)="scrollToSection('experience')">Experience</a></li>
         <li><a (click)="scrollToSection('education')">Education</a></li>
         <li><a (click)="scrollToSection('skills')">Skills</a></li>
-        <li><a (click)="scrollToSection('projects')">Projects</a></li>
+        <li><a (click)="scrollToSection('testimonal')">Projects</a></li>
       </ul>
     </nav>
-    <!-- [class.menu-collapsed]="menuCollapsed" -->
-    <main class="resume-content" >
-  
+
+
+
+    <main class="resume-content">
       <div id="about">
         <h2>About Me</h2>
         <div class="about_content">
@@ -20,11 +21,11 @@
             <img src="assets/images/avatars/me.jpg">
           </div>
           <div class="about_me">
-          
-            <p>A passionate Full Stack Developer with a diverse skill set and a strong commitment to delivering high-quality,cations.</p>
+            <p>A passionate Full Stack Developer with a diverse skill set and a strong commitment to delivering high-quality, cations.</p>
             <p>On the front-end, I specialize in Angular, creating dynamic and responsive user interfaces that provide seamless user experiences. My proficiency in HTML, CSS, and JavaScript allows me to craft intuitive and visually appealing web applications.</p>
-            <p>On the back-end, I am well-versed in Python and the .NET framework, including both .NET Core and .NET Framework. I have a deep understanding of building robust server-side applications and RESTful APIs. My work with databases spans SQL and NoSQL solutionss.</p>
+            <p>On the back-end, I am well-versed in Python and the .NET framework, including both .NET Core and .NET Framework. I have a deep understanding of building robust server-side applications and RESTful APIs. My work with databases spans SQL and NoSQL solutions.</p>
           </div>
+          <div class="span-3"></div>
           <div class="contact_details">
             <p>
               <strong>Moubien Kayali</strong><br>
@@ -36,32 +37,166 @@
           <div class="download_resume">
             <a href="assets/resume/moubien_kayali_cv.pdf" download class="btn-download">Download CV</a>
           </div>
-          
         </div>
       </div>
-  
+    
       <div id="experience">
-        <h2>Experience</h2>
-        <!-- <fa-icon [icon]="faCoffee"></fa-icon> -->
-
-       
-        <p>Your professional experience...</p>
+        <h2>Career</h2>
+        <div class="experience_content">
+          <!-- <h3>Experience</h3> -->
+          <h3>Cloud Solutions</h3>
+          <h5>Senior Software Developer.       <span>JULY 2023 - PRESENT</span></h5>
+   
+          <ul>
+            <li>Cyclus Application for Claim Revenue Management Optimization and performance tuning, through deep inspection of heavily data driven application that involves integrations with other systems such as Nphies.</li>
+            <li>Microservice architecture, Asynchronous and parallel processes handling.</li>
+            <li>.Net Core API, Ocelot Gateway.</li>
+            <li>SQL Server, EF Core, LINQ And Dapper</li>
+            <li>HL7 FHIR standard</li>
+            <li>NSSM, Windows Services, IIS, JIRA.</li>
+          </ul>
+          <h3>Wipro Arabia</h3>
+          <h5>Full Stack Developer .    <span>MARCH 2022 - MARCH 2023</span></h5>
+      
+          <ul>
+            <li>Attendance portal to show the reports of employees attendance with admin panel to add permissions of viewing data. company portals.</li>
+            <li>Windows Worker service that sends SMS/Email notifications to employees for (weekly/daily)attendance</li>
+            <li>Windows service built from scratch that fetches all TBC employees data from active directory and saves them into the database and it updates the data every 24 hours.</li>
+            <li>Integration with IBM/BPM middleware.</li>
+          </ul>
+          <h4>Alamiah for Internet & Communications</h4>
+          <h5>.NET Developer & Oracle Developer&nbsp;. <span>JANUARY 2016 - MAY 2021</span></h5>
+          
+          <ul>
+            <li>Developed SQL queries in Oracle and utilized PL/SQL to construct procedures, packages, functions, and triggers for the data access layer (DAL) within ASP.NET projects. Conducted analysis of business requirements to architect appropriate database structures, including tables and related components such as Entity-Relationship Diagrams (ERD) and schema diagrams.</li>
+            <li>Managed Oracle database monitoring activities to ensure optimal performance and reliability.</li>
+            <li>Designed and implemented Crystal Reports, leveraging SQL queries, to furnish agents and printing employees with comprehensive reports and cards.</li>
+            <li>Enhanced daily database check program through C# updates to accommodate evolving monitoring needs effectively.</li>
+            <li>Produced comprehensive documentation and user manuals to facilitate the adoption of newly implemented features.</li>
+            <li>Demonstrated strong communication skills in effectively conveying technical concepts and collaborating with cross-functional teams.</li>
+          </ul>
+          <p><strong>Technologies Utilized:</strong></p>
+          <ul>
+            <li>Programming Language: C#</li>
+            <li>Server Side: ASP.NET (WEB Forms)</li>
+            <li>Database: Oracle</li>
+            <li>Client Side: JavaScript</li>
+            <li>Markup Languages: HTML5, CSS3, XML</li>
+            <li>Frameworks: .NET, Bootstrap</li>
+            <li>Reporting: Crystal Reports</li>
+            <li>Additional Skills: Entity Framework, ADO.NET, Encryption and Decryption, Team Foundation Server (TFS), LINQ</li>
+          </ul>
+        </div>
       </div>
-  
+    
       <div id="education">
         <h2>Education</h2>
-        <p>Your educational background...</p>
+        <div class="education_content">
+          <h3>MSA University</h3>
+          <h5>Bachelor Degree in Electronic Circuits and Electrical Communications .    <span>OCTOBER 2015</span></h5>
+      
+          <p>
+            <span>At MSA University, I pursued a Bachelor's Degree in Electronic Circuits and Electrical Communications. This comprehensive program provided me with a solid foundation in electrical engineering principles and practices.</span>
+          </p>
+        </div>
       </div>
-  
+    
       <div id="skills">
         <h2>Skills</h2>
-        <p>Your skills...</p>
+        <div class="skills_content">
+          <p>Proficient in a variety of technologies and methodologies, I bring a dynamic skill set to the table. With expertise in .NET Core, Angular, and JavaScript, I am adept at developing robust and responsive web applications. My familiarity with Agile Development methodologies ensures efficient project execution and delivery. Additionally, I possess strong HTML and CSS skills, enabling me to create visually appealing and user-friendly interfaces. With a keen eye for UI/UX design principles, I strive to deliver intuitive and engaging user experiences across all platforms.</p>
+          <div class="skill">
+            <span class="skill-name">.NET CORE</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%;"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span class="skill-name">ANGULAR</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 85%;"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span class="skill-name">JAVASCRIPT</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 80%;"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span class="skill-name">AGILE DEVELOPMENT</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 75%;"></div>
+            </div>
+          </div>
+          <div class="skill">
+            <span class="skill-name">HTML, CSS</span>
+            <div class="progress-bar">
+              <div class="progress" style="width: 90%;"></div>
+            </div>
+          </div>
+        </div>
       </div>
-  
-      <div id="projects">
-        <h2>Projects</h2>
-        <p>Details about your projects...</p>
+      
+      <h2>Testimonal</h2>
+      <div id="testimonal" class="testimonial-cards">
+      
+        <div class="testimonial-card">
+          <div class="author-image">
+            <img src="assets/images/avatars/abhay.png" alt="Author Image">
+          </div>
+          <div class="testimonial-content">
+            <h3>Abhay Kumar Singh</h3>
+            <h4>Senior Manager, Saudi Investment Bank</h4>
+            <p>
+              I had the pleasure of working closely with Moubien on several .NET projects. Their technical skills and attention to detail consistently impressed me. He have a deep understanding of the .NET framework and a knack for finding elegant solutions to complex problems. Their teamwork and dedication make him a valuable asset to any development team. I highly recommend Moubien to anyone seeking a skilled and reliable .NET developer.
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="author-image">
+            <img src="assets/images/avatars/ali.png" alt="Author Image">
+          </div>
+          <div class="testimonial-content">
+            <h3>Ali Al-Hilali</h3>
+            <h4>Database Administrator, 2P</h4>
+            <p>
+              Moubien Is a very good and reliable person on whom you can depend to complete the task at any give point of time He is very hardworking and dedicated person i have met and worked with He is an asset to the company.
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="author-image">
+            <img src="assets/images/avatars/muqeet.png" alt="Author Image">
+          </div>
+          <div class="testimonial-content">
+            <h3>Muhammed Muqeet Ahmed</h3>
+            <h4>Senior Software, Wipro Arabia</h4>
+            <p>
+              Moubien is one of the most valuable people I have ever met. Both smart and professional. Experienced, deadline oriented and intelligent person. Highly recommended..
+            </p>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="author-image">
+            <img src="assets/images/avatars/rama.png" alt="Author Image">
+          </div>
+          <div class="testimonial-content">
+            <h3>Abhay Kumar Singh</h3>
+            <h4>Senior Manager, Saudi Investment Bank</h4>
+            <p>
+              I had the pleasure of working closely with Moubien on several .NET projects. Their technical skills and attention to detail consistently impressed me. He have a deep understanding of the .NET framework and a knack for finding elegant solutions to complex problems. Their teamwork and dedication make him a valuable asset to any development team. I highly recommend Moubien to anyone seeking a skilled and reliable .NET developer.
+            </p>
+          </div>
+        </div>
+        
       </div>
     </main>
+    
+    
+
   </div>
   
