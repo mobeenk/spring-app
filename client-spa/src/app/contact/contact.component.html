@@ -1,2 +1,28 @@
-<h1>ss</h1>
-<p>contact works!</p>
+<div class="contact-component">
+    <div class="contact-content">
+      <h2>SAY HELLO</h2>
+      <p>Have a new project in mind? Looking for a programming private teacher? Let's connect and discuss.</p>
+      <div class="contact-details">
+        <p><strong>Email:</strong> mobeen-k&#64;hotmail.com</p>
+        <p><strong>Phone:</strong> +966 54 255 1520</p>
+      </div>
+      <a href="#contact-form" class="btn-letstalk">LET'S TALK</a>
+    </div>
+    
+    <div id="contact-form" class="contact-form">
+      <h3>Contact Form</h3>
+      <form action="submit.php" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  
