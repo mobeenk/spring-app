@@ -3,6 +3,7 @@ import { ApiService } from '../services/api.service';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -16,7 +17,7 @@ export class HomeComponent implements OnInit {
   
   postData: any = { name: 'Test' };
 
-  constructor(private apiService: ApiService) { }
+  constructor(private apiService: ApiService,private router: Router) { }
 
   scrollToSection(section: string): void {
     document.querySelector(section)?.scrollIntoView({ behavior: 'smooth' });
@@ -30,5 +31,8 @@ export class HomeComponent implements OnInit {
     // this.apiService.post<any>('https://api.example.com/data', this.postData).subscribe(response => {
     //   console.log(response);
     // });
+  }
+  navigateToResume() {
+    this.router.navigate(['/resume']); // Navigate to the 'resume' route
   }
 }

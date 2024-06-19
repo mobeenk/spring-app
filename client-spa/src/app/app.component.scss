@@ -37,5 +37,9 @@
   
   .top-nav ul li a:hover,
   .top-nav ul li a.active {
-    text-decoration: underline;
+    &:hover {
+      // text-decoration: underline;
+      background-color: var(--color-orange-title);
+      padding: 5px;
+    }
   }

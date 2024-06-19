@@ -3,11 +3,11 @@
     <button class="menu-toggle" (click)="toggleMenu()">☰</button>
     <nav class="side-menu" [ngClass]="menuClasses" >
       <ul>
-        <li><a (click)="scrollToSection('about')">About Me</a></li>
-        <li><a (click)="scrollToSection('experience')">Experience</a></li>
-        <li><a (click)="scrollToSection('education')">Education</a></li>
-        <li><a (click)="scrollToSection('skills')">Skills</a></li>
-        <li><a (click)="scrollToSection('testimonal')">Projects</a></li>
+        <li><a (click)="scrollToSection('about')">{{"about_me" | translate}}</a></li>
+        <li><a (click)="scrollToSection('experience')">{{"experience" | translate}}</a></li>
+        <li><a (click)="scrollToSection('education')">{{"education" | translate}}</a></li>
+        <li><a (click)="scrollToSection('skills')">{{"skills" | translate}}</a></li>
+        <li><a (click)="scrollToSection('testimonal')">{{"testimonials" | translate}}</a></li>
       </ul>
     </nav>
 
@@ -15,15 +15,15 @@
 
     <main class="resume-content">
       <div id="about">
-        <h2>About Me</h2>
+        <h2>{{"about_me" | translate}}</h2>
         <div class="about_content">
           <div class="about_photo">
             <img src="assets/images/avatars/me.jpg">
           </div>
           <div class="about_me">
-            <p>A passionate Full Stack Developer with a diverse skill set and a strong commitment to delivering high-quality, cations.</p>
-            <p>On the front-end, I specialize in Angular, creating dynamic and responsive user interfaces that provide seamless user experiences. My proficiency in HTML, CSS, and JavaScript allows me to craft intuitive and visually appealing web applications.</p>
-            <p>On the back-end, I am well-versed in Python and the .NET framework, including both .NET Core and .NET Framework. I have a deep understanding of building robust server-side applications and RESTful APIs. My work with databases spans SQL and NoSQL solutions.</p>
+            <p>{{"about_p1" | translate}}</p>
+            <p>{{"about_p2" | translate}}</p>
+            <p>{{"about_p3" | translate}}</p>
           </div>
           <div class="span-3"></div>
           <div class="contact_details">
@@ -41,10 +41,10 @@
       </div>
     
       <div id="experience">
-        <h2>Career</h2>
+        <h2>{{"experience" | translate}}</h2>
         <div class="experience_content">
           <!-- <h3>Experience</h3> -->
-          <h3>Cloud Solutions</h3>
+          <h4>Cloud Solutions</h4>
           <h5>Senior Software Developer.       <span>JULY 2023 - PRESENT</span></h5>
    
           <ul>
@@ -55,7 +55,7 @@
             <li>HL7 FHIR standard</li>
             <li>NSSM, Windows Services, IIS, JIRA.</li>
           </ul>
-          <h3>Wipro Arabia</h3>
+          <h4>Wipro Arabia</h4>
           <h5>Full Stack Developer .    <span>MARCH 2022 - MARCH 2023</span></h5>
       
           <ul>
@@ -90,9 +90,9 @@
       </div>
     
       <div id="education">
-        <h2>Education</h2>
+        <h2>{{"education" | translate}}</h2>
         <div class="education_content">
-          <h3>MSA University</h3>
+          <h4>MSA University</h4>
           <h5>Bachelor Degree in Electronic Circuits and Electrical Communications .    <span>OCTOBER 2015</span></h5>
       
           <p>
@@ -102,7 +102,7 @@
       </div>
     
       <div id="skills">
-        <h2>Skills</h2>
+        <h2>{{"skills" | translate}}</h2>
         <div class="skills_content">
           <p>Proficient in a variety of technologies and methodologies, I bring a dynamic skill set to the table. With expertise in .NET Core, Angular, and JavaScript, I am adept at developing robust and responsive web applications. My familiarity with Agile Development methodologies ensures efficient project execution and delivery. Additionally, I possess strong HTML and CSS skills, enabling me to create visually appealing and user-friendly interfaces. With a keen eye for UI/UX design principles, I strive to deliver intuitive and engaging user experiences across all platforms.</p>
           <div class="skill">
@@ -138,7 +138,7 @@
         </div>
       </div>
       
-      <h2>Testimonal</h2>
+      <h2>{{"testimonials" | translate}}</h2>
       <div id="testimonal" class="testimonial-cards">
       
         <div class="testimonial-card">

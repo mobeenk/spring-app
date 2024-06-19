@@ -5,6 +5,8 @@
     position: relative;
   }
 
+
+
   .menu-toggle {
     position: fixed;
     // top: 10px;
@@ -53,9 +55,12 @@
           color: #fff;
           text-decoration: none;
           font-size: 18px;
-          &:hover {
-            text-decoration: underline;
-          }
+      
+        }
+        &:hover {
+          // text-decoration: underline;
+          background-color: var(--color-orange-title);
+          padding: 5px;
         }
       }
       
@@ -147,6 +152,7 @@
        list-style-type: disc;
        margin-left: 20px;
        margin-top: 20px;
+      
     }
   }
   
@@ -154,6 +160,8 @@
   h5 > span {
     color: gray;
      font-style: italic;
+     font-size: 15px;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   }
 
   // ********************************  SKILLS ******************************  
@@ -247,6 +255,21 @@
       // width: 100%; /* Reduce image width by 50% */
       // object-fit: cover; /* Maintain aspect ratio with cropping */
       transform: scale(0.6); /* Scale image down to 50% */
+    }
+    .span-3{
+      grid-column: span 0;
+    }
+    .about_photo {
+      grid-column: span 1;
+      margin-top: 25%;
+      justify-self: center;
+    }
+    
+    .about_me {
+      grid-column: span 11;
+      p{
+        margin-top: 30px;
+      }
     }
 
   }
