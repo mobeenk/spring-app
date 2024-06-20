@@ -14,9 +14,6 @@ public class HomeController {
 
     @Autowired
     private UserInfoService userInfoService;
-
-
-
     @Autowired
     private AuthenticationManager authenticationManager;
 

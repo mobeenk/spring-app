@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
     document.querySelector(section)?.scrollIntoView({ behavior: 'smooth' });
   }
   ngOnInit(): void {
-    this.apiService.get<any>('http://207.154.253.49:8080/home/welcome').subscribe(response => {
+    this.apiService.get<any>('https://moubien-kayali.com/api/home/welcome').subscribe(response => {
       this.data = response;
       console.log(JSON.stringify(this.data));
     });
