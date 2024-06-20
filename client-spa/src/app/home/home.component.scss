@@ -1,7 +1,6 @@
 
   $dim:220px;
 
-
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -12,24 +11,12 @@ body {
   display: flex;
   height: 100vh;
   background-image: url(/assets/images/header-bg-3000.jpg); /* Add your background image path here */
-  background-size: stretch;
-  background-position: left; /* Align the right edge of the image to the right side */
+  background-size: cover;
+  background-position: center; /* Align the right edge of the image to the right side */
   flex-direction: column;
   text-align: center;
   font-size: 35px;
   color: #fff;
-  // .head {
-  //   margin-top: 80px;
-  // }
-  // .desc {
-  //   margin-top: 50px;
-  //   margin-right: $dim;
-  //   margin-left: $dim;
-  // }
-  // .btn-scroll {
-  //   margin-top: 120px; /* Adjust as needed */
-  //   align-self: center; /* Center align the button horizontally */
-  // }
 
   .head, .desc, .btn-scroll {
     position: relative;

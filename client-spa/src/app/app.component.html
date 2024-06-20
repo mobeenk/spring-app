@@ -1,25 +1,27 @@
-<!-- src/app/app.component.html -->
-<div class="content-wrapper">
-  <header>
-    <nav class="top-nav">
-      <ul>
-        <li><a routerLink="/home" routerLinkActive="active">{{ 'HOME'  | translate}}</a></li>
-        <li><a routerLink="/resume" routerLinkActive="active">{{ 'RESUME' | translate }}</a></li>
-        <li><a routerLink="/Utilities" routerLinkActive="active">{{ 'Utilities' | translate }}</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">{{ 'CONTACT' | translate }}</a></li>
-        <li>
-          <button (click)="switchLanguage('en')">English</button>
-          <button (click)="switchLanguage('ar')">العربية</button>
-        </li>
-      </ul>
-    </nav>
-  </header>
+<div class="container">
+  <div class="content-wrapper">
+    <header>
+      <nav class="top-nav">
+        <ul>
+          <li><a routerLink="/home" routerLinkActive="active">{{ 'HOME' | translate }}</a></li>
+          <li><a routerLink="/resume" routerLinkActive="active">{{ 'RESUME' | translate }}</a></li>
+          <li><a routerLink="/utilities" routerLinkActive="active">{{ 'Utilities' | translate }}</a></li>
+          <li><a routerLink="/contact" routerLinkActive="active">{{ 'CONTACT' | translate }}</a></li>
+          <li>
+            <button (click)="switchLanguage('en')">English</button>
+            <button (click)="switchLanguage('ar')">العربية</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
 
-  <main>
-    <router-outlet></router-outlet>
-  </main>
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+    <footer class="footer">
+      <p>&copy; 2024 Moubien Kayali All Rights Reserved</p>
+    </footer>
+  </div>
+
+
 </div>
-
-<footer>
-  <p>&copy; 2024 Moubien Kayali Website</p>
-</footer>
