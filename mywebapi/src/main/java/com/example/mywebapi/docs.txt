@@ -1,0 +1,18 @@
+[
+  {
+    "symbol": "XAU",
+    "name": "Gold"
+  },
+  {
+    "symbol": "XAG",
+    "name": "Silver"
+  },
+  {
+    "symbol": "BTC",
+    "name": "Bitcoin"
+  },
+  {
+    "symbol": "ETH",
+    "name": "Ethereum"
+  }
+]

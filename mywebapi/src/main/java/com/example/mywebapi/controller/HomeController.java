@@ -1,24 +1,29 @@
 package com.example.mywebapi.controller;
 
 
+import com.example.mywebapi.service.ExchangeRateService;
 import com.example.mywebapi.service.UserInfoService;
+import dto.ExchangeRateDTO;
+import models.CryptoAndMetalsResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping("/home")
 public class HomeController {
-
+    private final ExchangeRateService exchangeRateService;
     @Autowired
     private UserInfoService userInfoService;
     @Autowired
     private AuthenticationManager authenticationManager;
 
-    public HomeController() {
-
+    public HomeController(ExchangeRateService exchangeRateService) {
+        this.exchangeRateService = exchangeRateService;
     }
 
     @GetMapping("/welcome")
@@ -26,6 +31,20 @@ public class HomeController {
 
         String message = "This is home page";
         return ResponseEntity.ok().body("{\"message\": \"" + message + "\"}");
+    }
+    @GetMapping("/exchange-rates")
+    public ExchangeRateDTO getExchangeRates(@RequestParam String currency) {
+        return exchangeRateService.getExchangeRates(currency);
+    }
+    @GetMapping("/crypto-metals-rate")
+    public CryptoAndMetalsResponse getCryptoMetals(@RequestParam String currency) {
+        return switch (currency) {
+            case "XAU" -> exchangeRateService.getGoldRate(currency);
+            case "XAG" -> exchangeRateService.getSilverRate(currency);
+            case "BTC" -> exchangeRateService.getBitcoinRate(currency);
+            default -> null;
+        };
+
     }
 
     @ExceptionHandler(ResponseStatusException.class)
