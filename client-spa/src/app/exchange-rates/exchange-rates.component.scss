@@ -1,0 +1,143 @@
+
+.section-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+    .container {
+        display: flex;
+        justify-content: center;
+        padding: 20px;
+
+    }
+    .updated-at-bottom {
+        margin-bottom: 20px;
+        text-align: center;
+        color: #999;
+    }
+
+  .exchange-rate {
+    width: 15%;
+    height: 15%;
+    padding: 10px;
+    margin: 10px;
+    background-color: #f0f0f0;
+    text-overflow: clip;
+    border-radius: 8px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+     
+      .name {
+        font-weight: bold;
+        font-size: 20px;
+      }
+      
+      .price {
+        // margin-top: 10px;
+        font-size: 1.2rem;
+ 
+        color:var(  --color-cyan-1) ; /* Teal color, adjust as needed */
+      }
+      
+      .updated-at {
+        margin-top: 5px;
+        color: #666;
+      }
+      
+
+  }
+  
+  
+
+  .tbl-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Ensure container takes full height of parent */
+  }
+  
+  .exchange-table {
+    width: 70%;
+    border-collapse: collapse;
+    margin: auto; /* Center align the table horizontally */
+  }
+  
+  .exchange-table th, .exchange-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .exchange-table th {
+    background-color: #f0f0f0;
+  }
+  .flag-icon {
+    width: 30px;
+    height: auto;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  
+
+
+
+  .currency-select-container {
+    margin-top: 25px;
+  }
+  .currency-label {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .currency-select {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #d6d4d4;
+    border-radius: 4px;
+    min-width: 150px;
+  }
+  .currency-select:focus {
+    border-color: #007bff; /* Change border color when select is focused */
+    outline: none; /* Remove default focus outline */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional: Add a subtle shadow */
+  }
+
+
+
+
+
+
+  @media screen  and (max-width: 440px) and (orientation: portrait) {
+    .exchange-rate {
+      width: 25%;
+      height: 15%;
+      padding: 10px;
+      margin: 10px;
+      background-color: #f0f0f0;
+      text-overflow: clip;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      text-align: center;
+       
+        .name {
+          font-weight: bold;
+          font-size: 20px;
+        }
+        
+        .price {
+          // margin-top: 10px;
+          font-size: 1.0rem;
+   
+          color:var(  --color-cyan-1) ; /* Teal color, adjust as needed */
+        }
+        
+        .updated-at {
+          margin-top: 5px;
+          color: #666;
+        }
+        
+  
+    }
+    
+  }
+  

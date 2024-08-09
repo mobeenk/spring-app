@@ -1,0 +1,28 @@
+{
+    "HOME": "Home",
+    "RESUME": "Resume",
+    "CONTACT": "Contact",
+    "ABOUT_ME": "About Me",
+    "EXPERIENCE": "Experience",
+    "EDUCATION": "Education",
+    "SKILLS": "Skills",
+    "PROJECTS": "Projects",
+    "MyName":"Moubien Kayali",
+    "home_desc": "Hello! I' a Full Stack Developer and private teacher, specializing in crafting dynamic web applications. I'm dedicated to delivering seamless user experiences and robust backend solutions. With expertise in HTML, CSS, JavaScript, Angular, Node.js, Python, and more, I help businesses and individuals efficiently and creatively.",
+    "scrolldown":"Know More",
+    "SAY HELLO":"SAY HELLO",
+    "Name":"Name",
+    "Email":"Email",
+     "Message":"Message",
+     "contact_h2": "Have a new project in mind? Looking for a programming private teacher? Let's connect and discuss",
+     "contact_form":"Contact Form",
+     "about_me":"About Me",
+     "experience": "Experience",
+     "education":"Education",
+     "skills":"Skills",
+     "testimonials":"Testimonials",
+     "about_p1":"A passionate Full Stack Developer with a diverse skill set and a strong commitment to delivering high-quality, cations.",
+    "about_p2":"On the front-end, I specialize in Angular, creating dynamic and responsive user interfaces that provide seamless user experiences. My proficiency in HTML, CSS, and JavaScript allows me to craft intuitive and visually appealing web applications.",
+    "about_p3":"On the back-end, I am well-versed in Python and the .NET framework, including both .NET Core and .NET Framework. I have a deep understanding of building robust server-side applications and RESTful APIs. My work with databases spans SQL and NoSQL solutions."
+  }
+  

@@ -1,0 +1,286 @@
+/* src/app/resume/resume.component.css */
+
+.resume-container {
+    display: flex;
+    position: relative;
+  }
+
+
+
+  .menu-toggle {
+    position: fixed;
+    // top: 10px;
+    z-index: 10;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    &.ltr {
+      left: 10px;
+      right: auto;
+    }
+    &.rtl {
+      right: 10px;
+      left: auto;
+    }
+  }
+
+
+  .side-menu {
+    width: 200px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    height: 100vh;
+    position: fixed;
+    transition: transform 0.3s ease;
+    z-index: 5;
+    margin-top: -50px;
+    padding-top: 50px;
+    cursor: pointer;
+    &.collapsed-ltr {
+      transform: translateX(-100%);
+    }
+    &.collapsed-rtl {
+      transform: translateX(100%);
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+      margin-top: 40px;
+      li {
+        margin: 10px 0;
+        a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 18px;
+      
+        }
+        &:hover {
+          // text-decoration: underline;
+          background-color: var(--color-orange-title);
+          padding: 5px;
+        }
+      }
+      
+    }
+  }
+
+  @media only screen  and (max-width: 420px) and (orientation: portrait) {
+    .side-menu, .menu-toggle {
+      display: none;
+    }
+    .resume-content {
+      margin-left: -10px;
+    }
+
+  }
+  
+
+  
+  .resume-content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  
+  .resume-content > div {
+    grid-column: span 12;
+  }
+  
+  #about {
+    grid-column: span 12;
+  }
+  
+  .about_content {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px;
+  }
+  
+  .about_photo {
+    grid-column: span 3;
+    margin-top: 25%;
+    justify-self: center;
+  }
+  
+  .about_me {
+    grid-column: span 6;
+    p{
+      margin-top: 30px;
+    }
+  }
+  .span-3{
+    grid-column: span 3;
+  }
+  
+  .contact_details {
+    grid-column: span 3;
+    justify-self: center;
+  }
+  
+  .download_resume {
+    grid-column: span 3;
+    align-self: end;
+  }
+  
+  .resume-content h2 {
+    display: inline-block;
+    border-bottom: 3px solid var(--color-orange-title);
+  }
+  
+  /* Additional sections styling */
+  #experience .experience_content,
+  #education .education_content,
+  #skills .skills_content,
+  #projects .projects_content {
+    grid-column: span 12;
+    background-color: #f9f9f9; /* Just an example */
+    padding: 20px;
+  }
+  
+  /* Experience Section Styling */
+  #experience .experience_content ,
+  #education .education_content 
+  {
+    h3, h4, h5 {
+      margin: 10px 0;
+    } 
+    ul{   
+      //  margin: 5px 0;
+       list-style-type: disc;
+       margin-left: 20px;
+       margin-top: 20px;
+      
+    }
+  }
+  
+
+  h5 > span {
+    color: gray;
+     font-style: italic;
+     font-size: 15px;
+     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  }
+
+  // ********************************  SKILLS ******************************  
+  
+  .skill {
+    margin-bottom: 20px;
+    margin-top: 30px;
+  }
+  
+  .skill-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  
+  .progress-bar {
+    background-color: #e0e0e0;
+    // border-radius: 10px;
+    overflow: hidden;
+    height: 30px;
+  }
+  
+  .progress {
+    background-color: var(--color-orange-title);
+    height: 100%;
+    border-radius: 10px;
+  }
+
+  // ******************************** Testimonal
+  .testimonial-cards {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    // height: 100vh; /* Adjust height based on your layout */
+  }
+  
+  .testimonial-card {
+    display: flex;
+    align-items: flex-start;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 20px 0;
+    // max-width: 600px;
+    width: 100%; /* Ensure card takes full width within its container */
+  }
+  
+  .author-image {
+    flex-shrink: 0;
+    margin-right: 20px;
+  }
+  
+  .author-image img {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+  }
+  
+  .testimonial-content h3 {
+    margin: 0 0 5px;
+    font-size: 1.2em;
+    color: #333;
+  }
+  
+  .testimonial-content h4 {
+    margin: 0 0 15px;
+    font-size: 1em;
+    color: #777;
+  }
+  
+  .testimonial-content p {
+    margin: 0;
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+  }
+  
+  
+  
+  @media only screen  and (max-width: 420px) and (orientation: portrait) {
+     .about_content {
+      font-size:11px;
+    }
+    .resume-content {
+      margin-left: -10px;
+    }
+    .about_photo {
+      // width: 100%; /* Reduce image width by 50% */
+      // object-fit: cover; /* Maintain aspect ratio with cropping */
+      transform: scale(0.6); /* Scale image down to 50% */
+    }
+    .span-3{
+      grid-column: span 0;
+    }
+    .about_photo {
+      grid-column: span 1;
+      margin-top: 25%;
+      justify-self: center;
+    }
+    
+    .about_me {
+      grid-column: span 11;
+      p{
+        margin-top: 30px;
+      }
+    }
+
+  }
+  
+  .header-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    margin-right: 10px; /* Adjust the spacing between the logo and the text as needed */
+    width: 50px; /* Adjust the size of the logo as needed */
+    height: auto;
+}

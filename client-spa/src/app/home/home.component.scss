@@ -1,0 +1,89 @@
+
+  $dim:220px;
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+
+.home-content {
+  display: flex;
+  height: 100vh;
+  background-image: url(/assets/images/header-bg-3000.jpg); /* Add your background image path here */
+  background-size: cover;
+  background-position: center; /* Align the right edge of the image to the right side */
+  flex-direction: column;
+  text-align: center;
+  font-size: 35px;
+  color: #fff;
+
+  .head, .desc, .btn-scroll {
+    position: relative;
+    z-index: 2; /* Ensure content is above the overlay */
+    margin-top: 120px; /* Adjust as needed */
+    align-self: center; /* Center align the button horizontally */
+  }
+
+  .head {
+    margin-top: 80px;
+  }
+
+  .desc {
+    margin-top: 50px;
+    margin-right: $dim;
+    margin-left: $dim;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 51px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Adjust the alpha value for the desired darkness */
+    z-index: 1;
+  }
+}
+
+
+.btn-scroll {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 120px;
+  background-color:  var(--color-orange-3); /* Button background color */
+  color: #fff; /* Text color */
+  border: 1px solid  var(--color-orange-2); /* Button border */
+  // border-radius: 5px; /* Rounded corners */
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  width: auto; /* Ensures it takes only as much width as necessary */
+  &:hover {
+    background-color: var(--color-orange-1); /* Darker background color on hover */
+    border-color: var(--color-orange-1); /* Darker border color on hover */
+  }
+  h3 {
+    margin: 0; /* Remove default margin */
+    font-size: 1rem; /* Adjust font size */
+  }
+}
+
+
+
+
+@media only screen and (max-width: 420px) and (orientation: portrait) {
+  /* Your styles for the .home-content class on small screens */
+  .home-content {
+    .desc {
+      margin-top: 50px;
+      margin-right: 0px;
+      margin-left: 0px;
+      h3{
+        font-size: 1.5rem; /* Example: Adjust font size for smaller screens */
+      }
+    }
+    /* Add other styles as needed */
+  }
+}
+
+

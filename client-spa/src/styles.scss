@@ -1,0 +1,138 @@
+:root{
+  --photo-radius: 140px;
+  --color-orange-1: hsla(24, 100%, 47%, 1);
+  --color-orange-2: rgb(194, 84, 12);
+  --color-orange-3: rgb(179, 81, 16);
+  --color-cyan-1: #009688;
+--color-orange-title :  #e9913f;
+}
+
+@font-face {
+  font-family: "cairofont";
+  src: url('/assets/fonts/Cairo-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+h1,h2,h3,h4,h5,h6,p,li,label,div {
+    font-family: 'cairofont';
+
+}
+
+// Adjust font size relative to default size
+body {
+  font-size: 1rem; // Base font size (16px by default)
+}
+
+h1 {
+  font-size: 2.5rem; // Increase h1 by 25% (20px)
+}
+
+h2 {
+  font-size: 2.2rem; // Increase h2 by ~18.75% (19px)
+}
+
+h3 {
+  font-size: 2.0rem; // Increase h3 by ~12.5% (18px)
+}
+
+h4 {
+  font-size: 1.8rem; // Increase h4 by ~6.25% (17px)
+}
+
+h5 {
+  font-size: 1.4rem; // Increase h5 by ~3.125% (16.5px)
+}
+
+h6 {
+  font-size: 1rem; // Use the base font size for h6 (16px)
+}
+
+p, li, label {
+  font-size: 1.2rem; // Use the base font size for paragraphs, list items, and labels
+}
+/* src/styles.css */
+
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    margin: 0;
+  }
+  
+  body {
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+
+  
+  main {
+    flex: 1;
+    padding: 20px;
+  }
+  
+
+  
+  // /* Section Styling */
+  section {
+    margin-bottom: 40px;
+  }
+  
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: #fff;
+  }
+
+  // about_me photo
+
+  .about_photo  {
+    width: var(--photo-radius);
+    height: var(--photo-radius);
+    overflow: hidden; 
+    margin-top: auto;
+    // border: 1.6rem solid rgba(255, 255, 255, .02);
+    border-radius: 50%;
+    box-shadow: 0 0 12px rgba(0,0,0,0.5);
+    
+  }
+
+  .about_photo img {
+    width: 100%; /* Make the image take the full width of the container */
+    height: 100%; /* Ensure the image covers the container */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+    display: block; /* Ensure the image behaves as a block element */
+  }
+
+  .btn-download {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ff8800;
+    color: #ffffff;
+    text-decoration: none;
+    border: none;
+    font-weight: bold;
+    // border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-download:hover {
+    background-color: #b35700;
+  }
+  
+  

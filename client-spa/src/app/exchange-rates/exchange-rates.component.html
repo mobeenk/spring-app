@@ -1,0 +1,59 @@
+
+<div class="section-1">
+
+
+  <div class="currency-select-container">
+    <label for="rates" class="currency-label">Select a currency:</label>
+    <select id="rates" class="currency-select" (change)="onConvertToCurency($event)">
+      <option *ngFor="let rate of rates" [value]="rate.rate">{{ rate.key }} ({{ rate.rate }})</option>
+    </select>
+  </div>
+  
+
+
+</div>
+
+<div class="container">
+  <div class="exchange-rate" *ngFor="let rate of cryptoAndMetals">
+    <div class="name">
+      <img [src]="getImgUrl(rate.name)" alt="{{ rate.name }} flag" class="flag-icon" />
+      {{ rate.name }}
+  </div>
+    <div class="price"><span *ngIf="isUSD">$</span>{{ rate.price | number:'1.2-2' }}</div>
+    <div class="updated-at">{{ rate.updatedAtReadable }}</div>
+  </div>
+</div>
+
+<div class="updated-at-bottom">
+  Updated at: {{ cryptoAndMetals[0]?.updatedAt | date:'mediumTime' }}
+</div>
+
+<div class="tbl-container">
+    <table class="exchange-table">
+        <thead>
+          <tr>
+            <!-- <th>Date</th>
+            <th>Base</th> -->
+            <th>Currency</th>
+            <th>Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rate of rates ">
+            <!-- <td>{{ exchangeRates.date }}</td>
+            <td>{{ exchangeRates.base }}</td> -->
+            <td>     
+                <img [src]="getFlagUrl(rate.key)" alt="{{ rate.key }} flag" class="flag-icon" />
+                {{ rate.key }}
+            </td>
+            <td>{{ rate.rate | number:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      
+</div>
+
+
+
+
+

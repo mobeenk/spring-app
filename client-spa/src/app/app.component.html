@@ -1,0 +1,34 @@
+<div class="container">
+  <div class="content-wrapper">
+    <header>
+      <nav class="top-nav">
+        <ul>
+          <li><a [routerLink]="getRouterLink('home')" routerLinkActive="active">{{ 'HOME' | translate }}</a></li>
+          <li><a [routerLink]="getRouterLink('resume')" routerLinkActive="active">{{ 'RESUME' | translate }}</a></li>
+          <li><a [routerLink]="getRouterLink('utilities')" routerLinkActive="active">{{ 'Utilities' | translate }}</a></li>
+          <li><a [routerLink]="getRouterLink('contact')" routerLinkActive="active">{{ 'CONTACT' | translate }}</a></li>
+          <li>
+            <button (click)="switchLanguage('en')" aria-label="Switch to English">English</button>
+            <button (click)="switchLanguage('ar')" aria-label="Switch to Arabic">العربية</button>
+          </li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="main-content">
+      <router-outlet></router-outlet>
+    </main>
+
+    <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+      <h6>&copy; <span itemprop="copyrightYear">2024</span> <span itemprop="copyrightHolder"> Moubien Kayali</span>. All Rights Reserved.</h6>
+      <nav>
+        <ul class="footer-nav">
+          <li><a [routerLink]="getRouterLink('home')" itemprop="url"><h6>Home</h6></a></li>
+          <li><a [routerLink]="getRouterLink('resume')" itemprop="url"><h6>Resume</h6></a></li>
+          <li><a [routerLink]="getRouterLink('contact')" itemprop="url"><h6>Contact</h6></a></li>
+          <li><a [routerLink]="getRouterLink('utilities')" itemprop="url"><h6>Utilities</h6></a></li>
+        </ul>
+      </nav>
+    </footer>
+  </div>
+</div>

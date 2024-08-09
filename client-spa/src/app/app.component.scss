@@ -1,0 +1,85 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html, body {
+    height: 100%;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure container takes at least the full viewport height */
+  }
+  .content-wrapper {
+    flex: 1; /* This makes content-wrapper take up remaining vertical space */
+    display: flex;
+    flex-direction: column;
+  }
+  /* Top Navigation Bar */
+  .top-nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      li {
+        margin: 0 15px;
+        a {
+          color: #fff;
+          text-decoration: none;
+          font-size: 18px;
+          &:hover, &.active {
+            background-color: var(--color-orange-title);
+            padding: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  .main-content {
+    flex: 1; /* Take up remaining space */
+  }
+  
+  /* Footer styles */
+  // .footer {
+  //   background-color: #333;
+  //   color: #fff;
+  //   text-align: center;
+  //   padding: 10px 0;
+  // }
+
+
+  .footer {
+    padding: 10px 0;
+    background-color: #333;
+    text-align: center;
+    border-top: 1px solid #e7e7e7;
+  }
+  
+  .footer-nav {
+    list-style: none;
+
+    display: flex;
+    justify-content: center;
+  }
+  
+  .footer-nav li {
+    margin: 0 15px;
+  }
+  
+  .footer-nav a {
+    font-size: 1rem;
+    text-decoration: none;
+    color: #c2d4e7;
+  }
+  
+  .footer-nav a:hover {
+    text-decoration: underline;
+  }
+  
+
+
