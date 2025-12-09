@@ -5,27 +5,41 @@
   }
   html, body {
     height: 100%;
+    margin: 0;
+    padding: 0;
   }
   .container {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Ensure container takes at least the full viewport height */
+    margin: 0;
+    padding: 0;
   }
   .content-wrapper {
     flex: 1; /* This makes content-wrapper take up remaining vertical space */
     display: flex;
     flex-direction: column;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    margin: 0;
+    padding: 0;
   }
   /* Top Navigation Bar */
   .top-nav {
     background-color: #333;
     color: #fff;
     padding: 10px 0;
+    margin: 0;
     ul {
       list-style: none;
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
       li {
         margin: 0 15px;
         a {
@@ -71,6 +85,9 @@
 
   .main-content {
     flex: 1; /* Take up remaining space */
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block;
   }
   
   /* Footer styles */
@@ -86,14 +103,16 @@
     padding: 10px 0;
     background-color: #333;
     text-align: center;
-    border-top: 1px solid #e7e7e7;
+    border-top: none;
+    margin: 0;
   }
   
   .footer-nav {
     list-style: none;
-
     display: flex;
     justify-content: center;
+    margin: 0;
+    padding: 0;
   }
   
   .footer-nav li {

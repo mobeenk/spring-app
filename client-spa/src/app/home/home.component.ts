@@ -199,7 +199,9 @@ export class HomeComponent implements OnInit {
   }
 
   navigateToResume() {
-    this.router.navigate(['/resume']); // Navigate to the 'resume' route
+    const langFromUrl = this.router.url.split('/')[1];
+    const lang = langFromUrl === 'ar' ? 'ar' : 'en';
+    this.router.navigate([`/${lang}/contact`]);
   }
 }
 //
