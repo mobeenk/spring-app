@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { I18nService } from '../services/i18n.service';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -17,13 +18,21 @@ import { CanonicalService } from '../services/canonical.service';
 export class ResumeComponent implements OnInit{
   menuCollapsed = false;
   faCoffee = faHippo;
-  constructor(public i18nService: I18nService, private metaService: Meta, private titleService: Title,
-    private canonicalService: CanonicalService
+  constructor(
+    public i18nService: I18nService,
+    private metaService: Meta,
+    private titleService: Title,
+    private canonicalService: CanonicalService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    this.setCanonicalURL();
+    if (isPlatformBrowser(this.platformId)) {
+      this.setCanonicalURL();
+    }
   }
   ngOnInit(): void {
-     this.initStyle()
+     if (isPlatformBrowser(this.platformId)) {
+       this.initStyle();
+     }
      this.titleService.setTitle('Moubien Kayali - Resume');
     //  this.metaService.addTags([
     //    { name: 'description', content: 'Moubien Kayali is  Available for private programming lessons.' },
@@ -40,6 +49,9 @@ export class ResumeComponent implements OnInit{
   //   document.querySelector(section)?.scrollIntoView({ behavior: 'smooth' });
   // }
   scrollToSection(section: string): void {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
     const element = document.getElementById(section);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -53,6 +65,10 @@ export class ResumeComponent implements OnInit{
   }
 
   initStyle() {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    
     let isSideMenuEnabled = this.i18nService.screenWidth <= 420
     let dir =  this.i18nService.currentDirection;
     const resumeContent = document.querySelector('.resume-content') as HTMLElement;
@@ -68,6 +84,8 @@ export class ResumeComponent implements OnInit{
 
   }
   setCanonicalURL() {
-    this.canonicalService.setCanonicalURL(window.location.href)
+    if (isPlatformBrowser(this.platformId)) {
+      this.canonicalService.setCanonicalURL(window.location.href);
+    }
   }
 }

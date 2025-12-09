@@ -51,6 +51,25 @@ h6 {
 p, li, label {
   font-size: 1.2rem; // Use the base font size for paragraphs, list items, and labels
 }
+
+// Mobile responsive typography
+@media only screen and (max-width: 768px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  h3 { font-size: 1.5rem; }
+  h4 { font-size: 1.35rem; }
+  h5 { font-size: 1.2rem; }
+  p, li, label { font-size: 1rem; }
+}
+
+@media only screen and (max-width: 480px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.35rem; }
+  h4 { font-size: 1.2rem; }
+  h5 { font-size: 1.1rem; }
+  p, li, label { font-size: 0.95rem; }
+}
 /* src/styles.css */
 
 /* Basic Reset */
@@ -79,6 +98,18 @@ p, li, label {
   main {
     flex: 1;
     padding: 20px;
+  }
+
+  @media only screen and (max-width: 768px) {
+    main {
+      padding: 10px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    main {
+      padding: 5px;
+    }
   }
   
 

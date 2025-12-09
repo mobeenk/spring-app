@@ -8,7 +8,7 @@
         display: flex;
         justify-content: center;
         padding: 20px;
-
+        flex-wrap: wrap;
     }
     .updated-at-bottom {
         margin-bottom: 20px;
@@ -98,46 +98,68 @@
   }
   .currency-select:focus {
     border-color: #007bff; /* Change border color when select is focused */
-    outline: none; /* Remove default focus outline */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Optional: Add a subtle shadow */
+  }
+
+  @media only screen and (max-width: 768px) {
+    .container {
+      flex-direction: row;
+      padding: 10px;
+    }
+    
+    .exchange-rate {
+      width: 30%;
+      margin: 5px;
+    }
+    
+    .exchange-table {
+      width: 95%;
+      font-size: 0.9em;
+    }
+    
+    .exchange-table th, .exchange-table td {
+      padding: 6px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .exchange-rate {
+      width: 45%;
+      padding: 8px;
+      margin: 5px;
+      
+      .name {
+        font-size: 16px;
+      }
+      
+      .price {
+        font-size: 0.95rem;
+      }
+    }
+    
+    .exchange-table {
+      width: 100%;
+      font-size: 0.85em;
+    }
+    
+    .exchange-table th, .exchange-table td {
+      padding: 4px;
+    }
+    
+    .flag-icon {
+      width: 20px;
+      margin-right: 4px;
+    }
+    
+    .currency-select {
+      min-width: 100px;
+      font-size: 12px;
+    }
   }
 
 
-
-
-
-
-  @media screen  and (max-width: 440px) and (orientation: portrait) {
+  @media screen and (max-width: 360px) {
     .exchange-rate {
-      width: 25%;
-      height: 15%;
-      padding: 10px;
-      margin: 10px;
-      background-color: #f0f0f0;
-      text-overflow: clip;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      text-align: center;
-       
-        .name {
-          font-weight: bold;
-          font-size: 20px;
-        }
-        
-        .price {
-          // margin-top: 10px;
-          font-size: 1.0rem;
-   
-          color:var(  --color-cyan-1) ; /* Teal color, adjust as needed */
-        }
-        
-        .updated-at {
-          margin-top: 5px;
-          color: #666;
-        }
-        
-  
+      width: 90%;
     }
-    
   }
   

@@ -67,14 +67,63 @@
     }
   }
 
-  @media only screen  and (max-width: 420px) and (orientation: portrait) {
+  @media only screen and (max-width: 768px) {
+    .side-menu {
+      width: 180px;
+      padding: 15px;
+      
+      ul li a {
+        font-size: 16px;
+      }
+    }
+    
+    .resume-content {
+      padding: 10px;
+      gap: 15px;
+      
+      .about_photo {
+        grid-column: span 12;
+        margin-top: 10px;
+      }
+      
+      .about_me {
+        grid-column: span 12;
+      }
+      
+      .contact_details,
+      .download_resume {
+        grid-column: span 12;
+      }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
     .side-menu, .menu-toggle {
       display: none;
     }
+    
     .resume-content {
-      margin-left: -10px;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+      padding: 5px;
+      gap: 10px;
     }
-
+    
+    #experience .experience_content,
+    #education .education_content,
+    #skills .skills_content,
+    #projects .projects_content {
+      padding: 10px;
+    }
+    
+    .skill {
+      margin-bottom: 15px;
+      margin-top: 15px;
+    }
+    
+    .progress-bar {
+      height: 25px;
+    }
   }
   
 

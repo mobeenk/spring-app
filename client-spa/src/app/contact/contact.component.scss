@@ -27,6 +27,15 @@
     margin: 5px 0;
   }
   
+  .contact-details a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .contact-details a:hover {
+    text-decoration: underline;
+  }
+  
   .btn-letstalk {
     display: inline-block;
     background-color: var(--color-orange-title);
@@ -87,5 +96,49 @@
   
   .contact-form button:hover {
     background-color: #e9913f;
+  }
+
+  @media only screen and (max-width: 768px) {
+    .contact-component {
+      padding: 20px;
+    }
+    
+    .contact-content h2 {
+      font-size: 1.5em;
+    }
+    
+    .contact-content p {
+      font-size: 1em;
+    }
+    
+    .contact-details p {
+      font-size: 0.95em;
+      word-break: break-word;
+    }
+    
+    .contact-form {
+      padding: 15px;
+      margin-bottom: 50px;
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .contact-component {
+      padding: 15px;
+    }
+    
+    .contact-content,
+    .contact-form {
+      max-width: 100%;
+    }
+    
+    .contact-content h2 {
+      font-size: 1.3em;
+    }
+    
+    .btn-letstalk {
+      padding: 8px 15px;
+      font-size: 0.9em;
+    }
   }
   

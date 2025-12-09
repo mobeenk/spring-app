@@ -71,18 +71,61 @@ body {
 
 
 
-@media only screen and (max-width: 420px) and (orientation: portrait) {
-  /* Your styles for the .home-content class on small screens */
+@media only screen and (max-width: 768px) {
   .home-content {
+    height: auto;
+    min-height: 100vh;
+    padding: 20px;
+    
+    .head {
+      margin-top: 60px;
+      font-size: 1.8rem;
+    }
+    
     .desc {
-      margin-top: 50px;
-      margin-right: 0px;
-      margin-left: 0px;
-      h3{
-        font-size: 1.5rem; /* Example: Adjust font size for smaller screens */
+      margin-top: 30px;
+      margin-right: 20px;
+      margin-left: 20px;
+      font-size: 1.2rem;
+    }
+    
+    .btn-scroll {
+      margin-top: 40px;
+      padding: 10px 60px;
+      h3 {
+        font-size: 0.9rem;
       }
     }
-    /* Add other styles as needed */
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .home-content {
+    padding: 15px;
+    
+    .head {
+      margin-top: 40px;
+      font-size: 1.5rem;
+    }
+    
+    .desc {
+      margin-top: 20px;
+      margin-right: 10px;
+      margin-left: 10px;
+      font-size: 1rem;
+      h3 {
+        font-size: 1.2rem;
+      }
+    }
+    
+    .btn-scroll {
+      margin-top: 30px;
+      padding: 10px 40px;
+      width: 90%;
+      h3 {
+        font-size: 0.85rem;
+      }
+    }
   }
 }
 

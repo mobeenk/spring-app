@@ -25,6 +25,7 @@
       list-style: none;
       display: flex;
       justify-content: center;
+      flex-wrap: wrap;
       li {
         margin: 0 15px;
         a {
@@ -34,6 +35,34 @@
           &:hover, &.active {
             background-color: var(--color-orange-title);
             padding: 5px;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .top-nav {
+      padding: 5px 0;
+      ul {
+        li {
+          margin: 5px 10px;
+          a {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+
+  @media only screen and (max-width: 480px) {
+    .top-nav {
+      ul {
+        li {
+          margin: 3px 5px;
+          a {
+            font-size: 14px;
+            padding: 3px 5px;
           }
         }
       }
