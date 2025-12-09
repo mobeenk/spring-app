@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Inject, PLATFORM_ID } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { Observable, catchError, forkJoin, map, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -6,6 +6,7 @@ import { environment } from '../../environments/environment';
 import { FormsModule } from '@angular/forms';
 import * as _ from 'lodash'; // Import lodash
 import { CanonicalService } from '../services/canonical.service';
+import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-exchange-rates',
   standalone: true,
@@ -13,7 +14,7 @@ import { CanonicalService } from '../services/canonical.service';
   templateUrl: './exchange-rates.component.html',
   styleUrl: './exchange-rates.component.scss'
 })
-export class ExchangeRatesComponent implements OnInit {
+export class ExchangeRatesComponent implements OnInit, AfterViewInit {
    sources: Observable<any>[] = [
     this.apiService.get<any>( `${environment.baseUrl}home/crypto-metals-rate?currency=${'XAU'}`),
     this.apiService.get<any>( `${environment.baseUrl}home/crypto-metals-rate?currency=${'XAG'}`),
@@ -23,16 +24,30 @@ export class ExchangeRatesComponent implements OnInit {
   origianlCryptoAndMetals: any[] = [];
   rates: { key: string, rate: number }[] = []; // Array to hold rates data
 
-  constructor(private apiService: ApiService, private canonicalService: CanonicalService){
-    this.canonicalService.setCanonicalURL(window.location.href);
+  constructor(
+    private apiService: ApiService,
+    private canonicalService: CanonicalService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ){
+    if (isPlatformBrowser(this.platformId)) {
+      this.canonicalService.setCanonicalURL(window.location.href);
+    }
   }
   ngOnInit(): void {
-    // Call getRate for each currency type and combine observables using forkJoin
-    this.getRates()
-    this.getExchangeRates()
+    // Intentionally left empty to avoid heavy API calls during SSR.
+    // Data fetching will run on the client in ngAfterViewInit.
+  }
+
+  ngAfterViewInit(): void {
+    if (isPlatformBrowser(this.platformId)) {
+      this.getRates();
+      this.getExchangeRates();
+    }
   }
   setCanonicalURL() {
-    this.canonicalService.setCanonicalURL(window.location.href)
+    if (isPlatformBrowser(this.platformId)) {
+      this.canonicalService.setCanonicalURL(window.location.href);
+    }
   }
   getRates() {
 

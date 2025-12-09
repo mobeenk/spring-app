@@ -34,11 +34,13 @@
             ],
             "styles": [
               "src/styles.scss"
-      
             ],
-            "scripts": [
-
-            ]
+            "scripts": [],
+            "server": "src/main.server.ts",
+            "prerender": true,
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
@@ -78,6 +80,18 @@
             },
             "development": {
               "buildTarget": "client-spa:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "serve-ssr": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "development": {
+              "buildTarget": "client-spa:build:development"
+            },
+            "production": {
+              "buildTarget": "client-spa:build:production"
             }
           },
           "defaultConfiguration": "development"

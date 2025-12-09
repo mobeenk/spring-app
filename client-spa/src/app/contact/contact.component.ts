@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 import { CanonicalService } from '../services/canonical.service';
 
@@ -10,8 +11,13 @@ import { CanonicalService } from '../services/canonical.service';
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent implements OnInit {
-  constructor( private canonicalService: CanonicalService){
-    this.canonicalService.setCanonicalURL(window.location.href);
+  constructor(
+    private canonicalService: CanonicalService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ){
+    if (isPlatformBrowser(this.platformId)) {
+      this.canonicalService.setCanonicalURL(window.location.href);
+    }
   }
   ngOnInit(): void {
    // throw new Error('Method not implemented.');
@@ -19,6 +25,8 @@ export class ContactComponent implements OnInit {
 
 
   setCanonicalURL() {
-    this.canonicalService.setCanonicalURL(window.location.href)
+    if (isPlatformBrowser(this.platformId)) {
+      this.canonicalService.setCanonicalURL(window.location.href);
+    }
   }
 }

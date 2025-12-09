@@ -1,4 +1,5 @@
-import { Injectable, HostListener } from '@angular/core';
+import { Injectable, HostListener, PLATFORM_ID, Inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRouteSnapshot, Router } from '@angular/router';
 
@@ -11,7 +12,11 @@ export class I18nService {
   screenHeight: any;
   screenWidth: any;
 
-  constructor(private translate: TranslateService, private router: Router) {
+  constructor(
+    private translate: TranslateService,
+    private router: Router,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {
     this.translate.addLangs(['en', 'ar']);
     this.router.events.subscribe(() => {
       const lang = this.getLanguageFromUrl();
@@ -25,7 +30,10 @@ export class I18nService {
     this.currentLanguage = browserLang && browserLang.match(/en|ar/) ? browserLang : 'en';
     this.translate.use(this.currentLanguage);
     this.setDirection(this.currentLanguage);
-    this.getScreenSize();
+    
+    if (isPlatformBrowser(this.platformId)) {
+      this.getScreenSize();
+    }
   }
 
   switchLanguage(lang: string) {
@@ -36,14 +44,18 @@ export class I18nService {
 
   @HostListener('window:resize', ['$event'])
   getScreenSize() {
-    this.screenHeight = window.innerHeight;
-    this.screenWidth = window.innerWidth;
+    if (isPlatformBrowser(this.platformId)) {
+      this.screenHeight = window.innerHeight;
+      this.screenWidth = window.innerWidth;
+    }
   }
 
   private setDirection(lang: string) {
     this.currentDirection = lang === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.dir = this.currentDirection;
-    this.adjustContentLayout();
+    if (isPlatformBrowser(this.platformId)) {
+      document.documentElement.dir = this.currentDirection;
+      this.adjustContentLayout();
+    }
   }
 
   private getLanguageFromUrl(): string | null {
@@ -52,6 +64,10 @@ export class I18nService {
   }
 
   private adjustContentLayout() {
+    if (!isPlatformBrowser(this.platformId)) {
+      return;
+    }
+    
     const resumeContent = document.querySelector('.resume-content') as HTMLElement;
     if (resumeContent) {
       const isSideMenuEnabled = this.screenWidth <= 420;
