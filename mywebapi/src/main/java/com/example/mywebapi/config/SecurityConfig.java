@@ -58,6 +58,7 @@ public class SecurityConfig implements WebMvcConfigurer {
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/welcome", "/auth/addNewUser"
                         , "/auth/generateToken").permitAll())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/home/**").permitAll())
+                .authorizeHttpRequests(auth -> auth.requestMatchers("/documents/**").permitAll())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/user/**").authenticated())
                 .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/admin/**").authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
