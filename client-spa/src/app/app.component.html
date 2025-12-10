@@ -5,7 +5,14 @@
         <ul>
           <li><a [routerLink]="getRouterLink('home')" routerLinkActive="active">{{ 'HOME' | translate }}</a></li>
           <li><a [routerLink]="getRouterLink('resume')" routerLinkActive="active">{{ 'RESUME' | translate }}</a></li>
-          <li><a [routerLink]="getRouterLink('utilities')" routerLinkActive="active">{{ 'Utilities' | translate }}</a></li>
+          <li class="dropdown">
+            <a [routerLink]="getRouterLink('utilities')" routerLinkActive="active">{{ 'Utilities' | translate }}</a>
+            <ul class="dropdown-menu">
+              <li><a [routerLink]="getRouterLink('utilities')">{{ 'Currency_Exchange' | translate }}</a></li>
+              <li><a href="#">Option 2</a></li>
+              <li><a href="#">Option 3</a></li>
+            </ul>
+          </li>
           <li><a [routerLink]="getRouterLink('contact')" routerLinkActive="active">{{ 'CONTACT' | translate }}</a></li>
         </ul>
         <div class="lang-switcher" [ngClass]="{'rtl': i18nService.currentDirection === 'rtl', 'ltr': i18nService.currentDirection === 'ltr'}">
