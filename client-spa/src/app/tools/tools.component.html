@@ -1,0 +1,97 @@
+<div class="tools-container" [dir]="i18nService.currentDirection">
+  <div class="tools-header">
+    <h1>{{ 'Tools' | translate }}</h1>
+    <p>{{ 'tools_description' | translate }}</p>
+  </div>
+
+  <div class="tools-content">
+    <aside class="tools-sidebar">
+      <nav class="tools-menu">
+        <ul>
+          <li>
+            <a 
+              (click)="selectTool('word-to-pdf')" 
+              [class.active]="selectedTool === 'word-to-pdf'"
+              class="tool-link">
+              {{ 'Word_to_PDF' | translate }}
+            </a>
+          </li>
+          <li>
+            <a 
+              (click)="selectTool('image-converter')" 
+              [class.active]="selectedTool === 'image-converter'"
+              class="tool-link">
+              {{ 'Image_Converter' | translate }}
+            </a>
+          </li>
+          <li>
+            <a 
+              (click)="selectTool('text-tools')" 
+              [class.active]="selectedTool === 'text-tools'"
+              class="tool-link">
+              {{ 'Text_Tools' | translate }}
+            </a>
+          </li>
+          <li>
+            <a 
+              (click)="selectTool('json-formatter')" 
+              [class.active]="selectedTool === 'json-formatter'"
+              class="tool-link">
+              {{ 'JSON_Formatter' | translate }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </aside>
+
+    <main class="tools-main">
+      <!-- Word to PDF Tool -->
+      <div *ngIf="selectedTool === 'word-to-pdf'" class="tool-panel">
+        <h2>{{ 'Word_to_PDF' | translate }}</h2>
+        <p>{{ 'word_pdf_desc' | translate }}</p>
+        <div class="tool-feature">
+          <p>✓ {{ 'feature_convert_docx' | translate }}</p>
+          <p>✓ {{ 'feature_maintain_format' | translate }}</p>
+          <p>✓ {{ 'feature_batch_convert' | translate }}</p>
+        </div>
+        <button class="btn-primary">{{ 'Start_Converting' | translate }}</button>
+      </div>
+
+      <!-- Image Converter Tool -->
+      <div *ngIf="selectedTool === 'image-converter'" class="tool-panel">
+        <h2>{{ 'Image_Converter' | translate }}</h2>
+        <p>{{ 'image_converter_desc' | translate }}</p>
+        <div class="tool-feature">
+          <p>✓ {{ 'feature_convert_formats' | translate }}</p>
+          <p>✓ {{ 'feature_compress_image' | translate }}</p>
+          <p>✓ {{ 'feature_batch_process' | translate }}</p>
+        </div>
+        <button class="btn-primary">{{ 'Start_Converting' | translate }}</button>
+      </div>
+
+      <!-- Text Tools -->
+      <div *ngIf="selectedTool === 'text-tools'" class="tool-panel">
+        <h2>{{ 'Text_Tools' | translate }}</h2>
+        <p>{{ 'text_tools_desc' | translate }}</p>
+        <div class="tool-feature">
+          <p>✓ {{ 'feature_case_converter' | translate }}</p>
+          <p>✓ {{ 'feature_word_counter' | translate }}</p>
+          <p>✓ {{ 'feature_text_formatter' | translate }}</p>
+        </div>
+        <button class="btn-primary">{{ 'Start_Using' | translate }}</button>
+      </div>
+
+      <!-- JSON Formatter Tool -->
+      <div *ngIf="selectedTool === 'json-formatter'" class="tool-panel">
+        <h2>{{ 'JSON_Formatter' | translate }}</h2>
+        <p>{{ 'json_formatter_desc' | translate }}</p>
+        <div class="tool-feature">
+          <p>✓ {{ 'feature_format_json' | translate }}</p>
+          <p>✓ {{ 'feature_validate_json' | translate }}</p>
+          <p>✓ {{ 'feature_minify_json' | translate }}</p>
+        </div>
+        <button class="btn-primary">{{ 'Start_Formatting' | translate }}</button>
+      </div>
+    </main>
+  </div>
+</div>

@@ -6,18 +6,18 @@
           <li><a [routerLink]="getRouterLink('home')" routerLinkActive="active">{{ 'HOME' | translate }}</a></li>
           <li><a [routerLink]="getRouterLink('resume')" routerLinkActive="active">{{ 'RESUME' | translate }}</a></li>
           <li class="dropdown">
-            <a [routerLink]="getRouterLink('utilities')" routerLinkActive="active">{{ 'Utilities' | translate }}</a>
+            <a (click)="$event.preventDefault()" role="button" class="utilities-link">{{ 'Utilities' | translate }}</a>
             <ul class="dropdown-menu">
               <li><a [routerLink]="getRouterLink('utilities')">{{ 'Currency_Exchange' | translate }}</a></li>
-              <li><a href="#">Option 2</a></li>
+              <li><a [routerLink]="getRouterLink('tools')">{{ 'Tools' | translate }}</a></li>
               <li><a href="#">Option 3</a></li>
             </ul>
           </li>
           <li><a [routerLink]="getRouterLink('contact')" routerLinkActive="active">{{ 'CONTACT' | translate }}</a></li>
         </ul>
         <div class="lang-switcher" [ngClass]="{'rtl': i18nService.currentDirection === 'rtl', 'ltr': i18nService.currentDirection === 'ltr'}">
-          <button class="lang-btn" (click)="switchLanguage('en')" aria-label="Switch to English">English</button>
-          <button class="lang-btn" (click)="switchLanguage('ar')" aria-label="Switch to Arabic">العربية</button>
+          <button class="lang-btn" [class.active]="currentLanguage === 'en'" (click)="switchLanguage('en')" aria-label="Switch to English">English</button>
+          <button class="lang-btn" [class.active]="currentLanguage === 'ar'" (click)="switchLanguage('ar')" aria-label="Switch to Arabic">العربية</button>
         </div>
       </nav>
     </header>
