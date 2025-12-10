@@ -31,8 +31,15 @@
   .top-nav {
     background-color: #333;
     color: #fff;
-    padding: 10px 0;
+    padding: 10px 20px;
     margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+    gap: 20px;
+    
     ul {
       list-style: none;
       display: flex;
@@ -57,29 +64,60 @@
 
   @media only screen and (max-width: 768px) {
     .top-nav {
-      padding: 5px 0;
+      padding: 10px 20px;
+      position: relative;
       ul {
         li {
-          margin: 5px 10px;
+          margin: 5px 8px;
           a {
             font-size: 16px;
           }
         }
       }
     }
+    
+    .lang-switcher {
+      position: absolute;
+      left: 20px;
+      right: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      gap: 5px;
+    }
+    
+    .lang-switcher.rtl {
+      right: 20px;
+      left: auto;
+    }
   }
 
   @media only screen and (max-width: 480px) {
     .top-nav {
+      padding: 10px 65px 10px 8px;
       ul {
         li {
-          margin: 3px 5px;
+          margin: 2px 3px;
           a {
-            font-size: 14px;
-            padding: 3px 5px;
+            font-size: 12px;
+            padding: 2px 3px;
           }
         }
       }
+    }
+    
+    .lang-switcher {
+      position: absolute;
+      left: 8px;
+      right: auto;
+      top: 50%;
+      transform: translateY(-50%);
+      gap: 3px;
+    }
+    
+    .lang-switcher.rtl {
+      right: 8px;
+      left: auto;
+      padding-left: 0;
     }
   }
 
@@ -128,6 +166,53 @@
   .footer-nav a:hover {
     text-decoration: underline;
   }
-  
+
+.lang-switcher {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lang-switcher.rtl {
+  right: 20px;
+  left: auto;
+}
+
+.lang-switcher.ltr {
+  left: 20px;
+  right: auto;
+}  .lang-btn {
+    background: var(--color-orange-title);
+    color: #fff;
+    border: none;
+    border-radius: 16px;
+    padding: 3px 10px;
+    font-size: 0.85rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .lang-btn:hover, .lang-btn:focus {
+    background: #e9913f;
+    outline: none;
+    box-shadow: 0 0 0 2px #e9913f44;
+  }
+
+  @media only screen and (max-width: 480px) {
+    .lang-switcher {
+      gap: 4px;
+    }
+    .lang-btn {
+      padding: 2px 7px;
+      font-size: 0.8rem;
+    }
+  }
+
 
 

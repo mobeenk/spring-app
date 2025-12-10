@@ -1,6 +1,7 @@
 import { AfterViewInit, ChangeDetectorRef, Component, Inject, PLATFORM_ID } from '@angular/core';
 import { RouterLink, RouterOutlet, Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 import { I18nService } from './services/i18n.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { CanonicalService } from './services/canonical.service';
@@ -10,7 +11,7 @@ import { isPlatformBrowser } from '@angular/common';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, RouterLink, TranslateModule],
+  imports: [RouterOutlet, RouterLink, TranslateModule, CommonModule],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
@@ -18,7 +19,7 @@ export class AppComponent implements AfterViewInit {
   currentLanguage: string;
 
   constructor(
-    private i18nService: I18nService,
+    public i18nService: I18nService,
     private cdr: ChangeDetectorRef,
     private canonicalService: CanonicalService,
     private pageTitleService: PageTitleService,

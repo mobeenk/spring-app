@@ -1,17 +1,17 @@
 <div class="container">
   <div class="content-wrapper">
     <header>
-      <nav class="top-nav">
+      <nav class="top-nav" [dir]="i18nService.currentDirection">
         <ul>
           <li><a [routerLink]="getRouterLink('home')" routerLinkActive="active">{{ 'HOME' | translate }}</a></li>
           <li><a [routerLink]="getRouterLink('resume')" routerLinkActive="active">{{ 'RESUME' | translate }}</a></li>
           <li><a [routerLink]="getRouterLink('utilities')" routerLinkActive="active">{{ 'Utilities' | translate }}</a></li>
           <li><a [routerLink]="getRouterLink('contact')" routerLinkActive="active">{{ 'CONTACT' | translate }}</a></li>
-          <li>
-            <button (click)="switchLanguage('en')" aria-label="Switch to English">English</button>
-            <button (click)="switchLanguage('ar')" aria-label="Switch to Arabic">العربية</button>
-          </li>
         </ul>
+        <div class="lang-switcher" [ngClass]="{'rtl': i18nService.currentDirection === 'rtl', 'ltr': i18nService.currentDirection === 'ltr'}">
+          <button class="lang-btn" (click)="switchLanguage('en')" aria-label="Switch to English">English</button>
+          <button class="lang-btn" (click)="switchLanguage('ar')" aria-label="Switch to Arabic">العربية</button>
+        </div>
       </nav>
     </header>
 
