@@ -54,7 +54,12 @@
           <p>✓ {{ 'feature_maintain_format' | translate }}</p>
           <p>✓ {{ 'feature_batch_convert' | translate }}</p>
         </div>
-        <button class="btn-primary">{{ 'Start_Converting' | translate }}</button>
+        <button class="btn-primary" (click)="showForm()">{{ 'Start_Converting' | translate }}</button>
+        <div *ngIf="showPlaceholder" class="tool-placeholder">
+          <h3>{{ 'Upload_Docx' | translate }}</h3>
+          <input type="file" accept=".doc,.docx" />
+          <p class="coming-soon">{{ 'Coming_Soon' | translate }}</p>
+        </div>
       </div>
 
       <!-- Image Converter Tool -->
@@ -66,7 +71,12 @@
           <p>✓ {{ 'feature_compress_image' | translate }}</p>
           <p>✓ {{ 'feature_batch_process' | translate }}</p>
         </div>
-        <button class="btn-primary">{{ 'Start_Converting' | translate }}</button>
+        <button class="btn-primary" (click)="showForm()">{{ 'Start_Converting' | translate }}</button>
+        <div *ngIf="showPlaceholder" class="tool-placeholder">
+          <h3>{{ 'Upload_Image' | translate }}</h3>
+          <input type="file" accept="image/*" multiple />
+          <p class="coming-soon">{{ 'Coming_Soon' | translate }}</p>
+        </div>
       </div>
 
       <!-- Text Tools -->
@@ -78,7 +88,12 @@
           <p>✓ {{ 'feature_word_counter' | translate }}</p>
           <p>✓ {{ 'feature_text_formatter' | translate }}</p>
         </div>
-        <button class="btn-primary">{{ 'Start_Using' | translate }}</button>
+        <button class="btn-primary" (click)="showForm()">{{ 'Start_Using' | translate }}</button>
+        <div *ngIf="showPlaceholder" class="tool-placeholder">
+          <h3>{{ 'Paste_Text' | translate }}</h3>
+          <textarea rows="4" style="width:100%"></textarea>
+          <p class="coming-soon">{{ 'Coming_Soon' | translate }}</p>
+        </div>
       </div>
 
       <!-- JSON Formatter Tool -->
@@ -90,7 +105,12 @@
           <p>✓ {{ 'feature_validate_json' | translate }}</p>
           <p>✓ {{ 'feature_minify_json' | translate }}</p>
         </div>
-        <button class="btn-primary">{{ 'Start_Formatting' | translate }}</button>
+        <button class="btn-primary" (click)="showForm()">{{ 'Start_Formatting' | translate }}</button>
+        <div *ngIf="showPlaceholder" class="tool-placeholder">
+          <h3>{{ 'Paste_JSON' | translate }}</h3>
+          <textarea rows="4" style="width:100%"></textarea>
+          <p class="coming-soon">{{ 'Coming_Soon' | translate }}</p>
+        </div>
       </div>
     </main>
   </div>

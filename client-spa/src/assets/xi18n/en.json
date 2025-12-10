@@ -49,6 +49,10 @@
      "testimonials":"Testimonials",
      "about_p1":"A passionate Full Stack Developer with a diverse skill set and a strong commitment to delivering high-quality, cations.",
     "about_p2":"On the front-end, I specialize in Angular, creating dynamic and responsive user interfaces that provide seamless user experiences. My proficiency in HTML, CSS, and JavaScript allows me to craft intuitive and visually appealing web applications.",
-    "about_p3":"On the back-end, I am well-versed in Python and the .NET framework, including both .NET Core and .NET Framework. I have a deep understanding of building robust server-side applications and RESTful APIs. My work with databases spans SQL and NoSQL solutions."
+    "about_p3":"On the back-end, I am well-versed in Python and the .NET framework, including both .NET Core and .NET Framework. I have a deep understanding of building robust server-side applications and RESTful APIs. My work with databases spans SQL and NoSQL solutions.",
+    "Upload_Docx": "Upload Word Document (.docx)",
+    "Upload_Image": "Upload Image(s)",
+    "Paste_Text": "Paste your text here",
+    "Paste_JSON": "Paste your JSON here",
+    "Coming_Soon": "Coming Soon!"
   }
-  

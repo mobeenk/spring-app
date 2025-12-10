@@ -12,13 +12,19 @@ import { I18nService } from '../services/i18n.service';
 })
 export class ToolsComponent {
   selectedTool: string = 'word-to-pdf';
+  showPlaceholder: boolean = false;
 
   constructor(
     public i18nService: I18nService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
+  showForm() {
+    this.showPlaceholder = true;
+  }
+
   selectTool(tool: string) {
     this.selectedTool = tool;
+    this.showPlaceholder = false;
   }
 }
