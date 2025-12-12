@@ -54,12 +54,14 @@ public class SecurityConfig implements WebMvcConfigurer {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/welcome", "/auth/addNewUser"
-                        , "/auth/generateToken").permitAll())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/home/**").permitAll())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/documents/**").permitAll())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/user/**").authenticated())
-                .authorizeHttpRequests(auth -> auth.requestMatchers("/auth/admin/**").authenticated())
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/welcome", "/auth/addNewUser", "/auth/generateToken", 
+                                       "/auth/forgot-password", "/auth/reset-password").permitAll()
+                        .requestMatchers("/home/**").permitAll()
+                        .requestMatchers("/documents/**").permitAll()
+                        .requestMatchers("/auth/user/**").authenticated()
+                        .requestMatchers("/auth/admin/**").authenticated()
+                        .anyRequest().authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(authFilter, UsernamePasswordAuthenticationFilter.class)

@@ -119,4 +119,19 @@ public class UserInfoService implements UserDetailsService {
         
         return _userRepository.save(user);
     }
+
+    public Optional<UserInfo> findByEmail(String email) {
+        return _userRepository.findByEmail(email);
+    }
+
+    public void resetPassword(String email, String newPassword) {
+        Optional<UserInfo> userOpt = _userRepository.findByEmail(email);
+        if (userOpt.isEmpty()) {
+            throw new UsernameNotFoundException("User not found with email: " + email);
+        }
+        
+        UserInfo user = userOpt.get();
+        user.setPassword(encoder.encode(newPassword));
+        _userRepository.save(user);
+    }
 }

@@ -178,6 +178,35 @@ public class UserController {
         }
     }
 
+    @Autowired
+    private com.example.mywebapi.service.PasswordResetService passwordResetService;
+
+    @PostMapping("/forgot-password")
+    public ResponseEntity<String> forgotPassword(@RequestBody com.example.mywebapi.entity.PasswordResetRequest request) {
+        try {
+            passwordResetService.generateResetCode(request.getEmail());
+            return ResponseEntity.ok("Password reset code has been sent to your email. Code is valid for 15 minutes.");
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("No user found with this email");
+        }
+    }
+
+    @PostMapping("/reset-password")
+    public ResponseEntity<String> resetPassword(@RequestBody com.example.mywebapi.entity.PasswordResetConfirm request) {
+        try {
+            passwordResetService.resetPassword(
+                request.getEmail(),
+                request.getResetCode(),
+                request.getNewPassword()
+            );
+            return ResponseEntity.ok("Password reset successfully");
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                .body(ex.getMessage());
+        }
+    }
+
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<String> handleResponseStatusException(ResponseStatusException ex) {
         return new ResponseEntity<>(ex.getReason(), ex.getStatusCode());
