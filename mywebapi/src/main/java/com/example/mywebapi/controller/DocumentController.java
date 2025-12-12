@@ -56,4 +56,41 @@ public class DocumentController {
                     .body("{\"error\": \"An unexpected error occurred: " + e.getMessage() + "\"}");
         }
     }
+
+    @PostMapping(value = "/convert-to-word", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> convertPdfToWord(@RequestParam("file") MultipartFile file) {
+        try {
+            // Validate file
+            if (file.isEmpty()) {
+                return ResponseEntity.badRequest()
+                        .body("{\"error\": \"Please select a file to upload\"}");
+            }
+
+            // Validate file type
+            String contentType = file.getContentType();
+            if (contentType == null || !contentType.equals("application/pdf")) {
+                return ResponseEntity.badRequest()
+                        .body("{\"error\": \"Please upload a valid PDF document (.pdf)\"}");
+            }
+
+            // Convert to Word
+            byte[] wordBytes = documentConversionService.convertPdfToWord(file);
+
+            // Prepare response headers
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.parseMediaType("application/vnd.openxmlformats-officedocument.wordprocessingml.document"));
+            headers.setContentDispositionFormData("attachment", 
+                    file.getOriginalFilename().replaceFirst("[.][^.]+$", "") + ".docx");
+            headers.setContentLength(wordBytes.length);
+
+            return new ResponseEntity<>(wordBytes, headers, HttpStatus.OK);
+
+        } catch (IOException e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("{\"error\": \"Failed to convert document: " + e.getMessage() + "\"}");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("{\"error\": \"An unexpected error occurred: " + e.getMessage() + "\"}");
+        }
+    }
 }
