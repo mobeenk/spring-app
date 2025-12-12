@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
+import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
 
 interface UserInfo {
@@ -10,7 +11,8 @@ interface UserInfo {
   name: string;
   email: string;
   roles: string;
-  accountNonLocked: boolean;
+  locked: number; // 0 = active, 1 = locked
+  accountNonLocked?: boolean; // API response field
 }
 
 @Component({
@@ -24,12 +26,19 @@ export class UsersComponent implements OnInit {
   private apiUrl = 'http://localhost:8080/auth';
   users: UserInfo[] = [];
   filteredUsers: UserInfo[] = [];
+  paginatedUsers: UserInfo[] = [];
   searchTerm: string = '';
   isLoading: boolean = false;
   errorMessage: string = '';
   showAddModal: boolean = false;
   showEditModal: boolean = false;
   selectedUser: UserInfo | null = null;
+
+  // Pagination
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+  totalPages: number = 1;
+  Math = Math;
 
   // Form models
   newUser = {
@@ -48,6 +57,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private http: HttpClient,
     private authService: AuthService,
+    private toastr: ToastrService,
     @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
@@ -67,11 +77,16 @@ export class UsersComponent implements OnInit {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.http.get<UserInfo[]>(`${this.apiUrl}/admin/users`, { headers: this.getHeaders() })
+    this.http.get<any[]>(`${this.apiUrl}/admin/users`, { headers: this.getHeaders() })
       .subscribe({
-        next: (users) => {
-          this.users = users;
-          this.filteredUsers = users;
+        next: (response) => {
+          // Transform API response: locked boolean (true/false) to number (1/0)
+          this.users = response.map(user => ({
+            ...user,
+            locked: user.locked === true ? 1 : 0
+          }));
+          this.filteredUsers = this.users;
+          this.updatePagination();
           this.isLoading = false;
         },
         error: (error) => {
@@ -91,39 +106,73 @@ export class UsersComponent implements OnInit {
         user.email.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
     }
+    this.currentPage = 1;
+    this.updatePagination();
+  }
+
+  updatePagination(): void {
+    this.totalPages = Math.ceil(this.filteredUsers.length / this.itemsPerPage);
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.paginatedUsers = this.filteredUsers.slice(startIndex, endIndex);
+  }
+
+  goToPage(page: number): void {
+    if (page >= 1 && page <= this.totalPages) {
+      this.currentPage = page;
+      this.updatePagination();
+    }
+  }
+
+  nextPage(): void {
+    this.goToPage(this.currentPage + 1);
+  }
+
+  previousPage(): void {
+    this.goToPage(this.currentPage - 1);
+  }
+
+  changeItemsPerPage(event: any): void {
+    this.itemsPerPage = parseInt(event.target.value);
+    this.currentPage = 1;
+    this.updatePagination();
+  }
+
+  get pageNumbers(): number[] {
+    const pages: number[] = [];
+    for (let i = 1; i <= this.totalPages; i++) {
+      pages.push(i);
+    }
+    return pages;
   }
 
   lockUser(username: string): void {
-    if (!confirm(`Are you sure you want to lock user: ${username}?`)) return;
-
     this.http.post(`${this.apiUrl}/admin/lockuser`, { username }, { 
       headers: this.getHeaders(),
       responseType: 'text'
     }).subscribe({
       next: (response) => {
-        alert(response);
+        this.toastr.success(`User ${username} locked successfully`, 'Success');
         this.loadUsers();
       },
       error: (error) => {
-        alert('Failed to lock user');
+        this.toastr.error('Failed to lock user', 'Error');
         console.error('Error:', error);
       }
     });
   }
 
   unlockUser(username: string): void {
-    if (!confirm(`Are you sure you want to unlock user: ${username}?`)) return;
-
     this.http.post(`${this.apiUrl}/admin/unlockuser`, { username }, { 
       headers: this.getHeaders(),
       responseType: 'text'
     }).subscribe({
       next: (response) => {
-        alert(response);
+        this.toastr.success(`User ${username} unlocked successfully`, 'Success');
         this.loadUsers();
       },
       error: (error) => {
-        alert('Failed to unlock user');
+        this.toastr.error('Failed to unlock user', 'Error');
         console.error('Error:', error);
       }
     });
@@ -137,11 +186,11 @@ export class UsersComponent implements OnInit {
       responseType: 'text'
     }).subscribe({
       next: (response) => {
-        alert(response);
+        this.toastr.success(`User ${username} deleted successfully`, 'Success');
         this.loadUsers();
       },
       error: (error) => {
-        alert('Failed to delete user');
+        this.toastr.error('Failed to delete user', 'Error');
         console.error('Error:', error);
       }
     });
@@ -158,7 +207,7 @@ export class UsersComponent implements OnInit {
 
   addUser(): void {
     if (!this.newUser.name || !this.newUser.email || !this.newUser.password) {
-      alert('Please fill in all fields');
+      this.toastr.warning('Please fill in all fields', 'Validation');
       return;
     }
 
@@ -167,12 +216,12 @@ export class UsersComponent implements OnInit {
       responseType: 'text'
     }).subscribe({
       next: (response) => {
-        alert(response);
+        this.toastr.success('User added successfully', 'Success');
         this.closeAddModal();
         this.loadUsers();
       },
       error: (error) => {
-        alert(error.error || 'Failed to add user');
+        this.toastr.error(error.error || 'Failed to add user', 'Error');
         console.error('Error:', error);
       }
     });
@@ -195,7 +244,7 @@ export class UsersComponent implements OnInit {
 
   updateUser(): void {
     if (!this.editUser.email) {
-      alert('Please fill in all fields');
+      this.toastr.warning('Please fill in all fields', 'Validation');
       return;
     }
 
@@ -203,12 +252,12 @@ export class UsersComponent implements OnInit {
       headers: this.getHeaders()
     }).subscribe({
       next: (response) => {
-        alert('User updated successfully');
+        this.toastr.success('User updated successfully', 'Success');
         this.closeEditModal();
         this.loadUsers();
       },
       error: (error) => {
-        alert('Failed to update user');
+        this.toastr.error('Failed to update user', 'Error');
         console.error('Error:', error);
       }
     });

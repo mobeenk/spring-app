@@ -45,9 +45,13 @@ public class UserController {
     }
     @PostMapping("/admin/lockuser")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public String lockuser(@RequestBody LockPayload username) {
-        userInfoService.lockUser(username.getUsername());
-        return ("User locked successfully "+username.getUsername());
+    public ResponseEntity<String> lockuser(@RequestBody LockPayload username) {
+        try {
+            userInfoService.lockUser(username.getUsername());
+            return ResponseEntity.ok("User locked successfully: " + username.getUsername());
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+        }
     }
     @PostMapping("/admin/unlockuser")
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")

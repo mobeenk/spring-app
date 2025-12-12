@@ -5,12 +5,21 @@ import { HttpClient, HttpClientModule, provideHttpClient, withFetch } from '@ang
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   
   providers: [
     provideRouter(routes),
     provideHttpClient(withFetch()),
+    provideAnimations(),
+    provideToastr({
+      timeOut: 3000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+      progressBar: true
+    }),
     BrowserModule,
     importProvidersFrom (HttpClientModule),
     importProvidersFrom (

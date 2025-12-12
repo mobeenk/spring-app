@@ -54,8 +54,15 @@ public class UserInfoService implements UserDetailsService {
     }
 
     public void lockUser(String username) {
+        if (username.equalsIgnoreCase("admin")) {
+            throw new IllegalArgumentException("Cannot lock admin user");
+        }
+        
         Optional<UserInfo> userOpt = _userRepository.findByName(username);
         userOpt.ifPresent(user -> {
+            if ("ROLE_ADMIN".equals(user.getRoles())) {
+                throw new IllegalArgumentException("Cannot lock users with admin role");
+            }
             user.setLocked(true);
             _userRepository.save(user);
         });

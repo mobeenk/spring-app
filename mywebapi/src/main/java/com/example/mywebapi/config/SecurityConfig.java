@@ -45,11 +45,10 @@ public class SecurityConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
-                .allowedOrigins("http://localhost:4200","https://moubien-kayali.com") // Add your Angular app's URL here http://localhost:4200
-//                .allowedMethods("GET", "POST", "PUT", "DELETE")
-//                .allowedHeaders("*");
-                .allowedMethods("GET", "POST")
-                .allowedHeaders("Content-Type", "Authorization");
+                .allowedOrigins("http://localhost:4200","https://moubien-kayali.com")
+                .allowedMethods("GET", "POST", "PUT", "DELETE")
+                .allowedHeaders("Content-Type", "Authorization")
+                .allowCredentials(true);
     }
     // Configuring HttpSecurity
     @Bean

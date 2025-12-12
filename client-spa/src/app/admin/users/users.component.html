@@ -4,13 +4,24 @@
     <button class="btn-add" (click)="openAddModal()">+ Add New User</button>
   </div>
 
-  <div class="search-bar">
-    <input 
-      type="text" 
-      [(ngModel)]="searchTerm" 
-      (input)="filterUsers()"
-      placeholder="Search by username or email..."
-    />
+  <div class="controls">
+    <div class="search-bar">
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        (input)="filterUsers()"
+        placeholder="Search by username or email..."
+      />
+    </div>
+    <div class="items-per-page">
+      <label>Items per page:</label>
+      <select (change)="changeItemsPerPage($event)">
+        <option value="5">5</option>
+        <option value="10" selected>10</option>
+        <option value="25">25</option>
+        <option value="50">50</option>
+      </select>
+    </div>
   </div>
 
   <div class="error-message" *ngIf="errorMessage">
@@ -34,7 +45,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let user of filteredUsers">
+        <tr *ngFor="let user of paginatedUsers">
           <td>{{ user.id }}</td>
           <td>{{ user.name }}</td>
           <td>{{ user.email }}</td>
@@ -44,27 +55,34 @@
             </span>
           </td>
           <td>
-            <span class="status-badge" [ngClass]="user.accountNonLocked ? 'unlocked' : 'locked'">
-              {{ user.accountNonLocked ? 'Unlocked' : 'Locked' }}
+            <span class="status-badge" [ngClass]="user.locked === 0 ? 'unlocked' : 'locked'">
+              {{ user.locked === 0 ? 'Active' : 'Locked' }}
             </span>
           </td>
           <td class="actions">
             <button class="btn-edit" (click)="openEditModal(user)" title="Edit">✏️</button>
             <button 
               class="btn-lock" 
-              *ngIf="user.accountNonLocked"
+              *ngIf="user.locked === 0 && user.roles !== 'ROLE_ADMIN'"
               (click)="lockUser(user.name)"
               title="Lock User">
               🔒
             </button>
             <button 
               class="btn-unlock" 
-              *ngIf="!user.accountNonLocked"
+              *ngIf="user.locked === 1 && user.roles !== 'ROLE_ADMIN'"
               (click)="unlockUser(user.name)"
               title="Unlock User">
               🔓
             </button>
-            <button class="btn-delete" (click)="deleteUser(user.name)" title="Delete">🗑️</button>
+            <button 
+              class="btn-delete" 
+              *ngIf="user.roles !== 'ROLE_ADMIN'"
+              (click)="deleteUser(user.name)" 
+              title="Delete">
+              🗑️
+            </button>
+            <span *ngIf="user.roles === 'ROLE_ADMIN'" class="protected-badge" title="Admin users cannot be locked or deleted">🛡️ Protected</span>
           </td>
         </tr>
       </tbody>
@@ -72,6 +90,34 @@
 
     <div class="no-users" *ngIf="filteredUsers.length === 0">
       No users found
+    </div>
+
+    <!-- Pagination -->
+    <div class="pagination" *ngIf="filteredUsers.length > 0">
+      <div class="pagination-info">
+        Showing {{ (currentPage - 1) * itemsPerPage + 1 }} to {{ Math.min(currentPage * itemsPerPage, filteredUsers.length) }} of {{ filteredUsers.length }} users
+      </div>
+      <div class="pagination-controls">
+        <button 
+          class="btn-page" 
+          (click)="previousPage()" 
+          [disabled]="currentPage === 1">
+          ← Previous
+        </button>
+        <button 
+          class="btn-page-number"
+          *ngFor="let page of pageNumbers"
+          (click)="goToPage(page)"
+          [class.active]="page === currentPage">
+          {{ page }}
+        </button>
+        <button 
+          class="btn-page" 
+          (click)="nextPage()" 
+          [disabled]="currentPage === totalPages">
+          Next →
+        </button>
+      </div>
     </div>
   </div>
 </div>
