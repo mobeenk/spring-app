@@ -36,6 +36,10 @@
         {{ errorMessage }}
       </div>
 
+      <div class="forgot-password-link">
+        <a routerLink="/forgot-password">Forgot your password?</a>
+      </div>
+
       <button type="submit" class="btn-login" [disabled]="isLoading">
         <span *ngIf="!isLoading">Login</span>
         <span *ngIf="isLoading">Logging in...</span>

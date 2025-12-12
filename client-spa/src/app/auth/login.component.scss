@@ -79,6 +79,23 @@
     border-left: 4px solid #d32f2f;
   }
 
+  .forgot-password-link {
+    text-align: right;
+    margin-bottom: 20px;
+
+    a {
+      color: #e9913f;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #d67d2f;
+        text-decoration: underline;
+      }
+    }
+  }
+
   .btn-login {
     width: 100%;
     padding: 14px;

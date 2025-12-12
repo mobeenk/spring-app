@@ -8,6 +8,8 @@ import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { UsersComponent } from './admin/users/users.component';
 import { LoginComponent } from './auth/login.component';
+import { ForgotPasswordComponent } from './auth/forgot-password.component';
+import { ResetPasswordComponent } from './auth/reset-password.component';
 import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
@@ -33,6 +35,8 @@ export const routes: Routes = [
     ]
   },
   { path: 'login', component: LoginComponent, data: { title: 'Admin Login' } },
+  { path: 'forgot-password', component: ForgotPasswordComponent, data: { title: 'Forgot Password' } },
+  { path: 'reset-password', component: ResetPasswordComponent, data: { title: 'Reset Password' } },
   {
     path: 'admin',
     component: AdminComponent,
