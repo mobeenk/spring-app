@@ -4,6 +4,10 @@ import { ContactComponent } from './contact/contact.component';
 import { ResumeComponent } from './resume/resume.component';
 import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.component';
 import { ToolsComponent } from './tools/tools.component';
+import { AdminComponent } from './admin/admin.component';
+import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { LoginComponent } from './auth/login.component';
+import { authGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'en/home', pathMatch: 'full' }, // Redirect root to 'home' with default language
@@ -25,6 +29,19 @@ export const routes: Routes = [
       { path: 'contact', component: ContactComponent, data: { title: 'اتصل بنا - Moubien Kayali', description: 'تواصل مع Moubien Kayali', keywords: 'contact, Moubien Kayali' }},
       { path: 'utilities', component: ExchangeRatesComponent, data: { title: 'أسعار الصرف - موقع Moubien Kayali', description: 'عرض أحدث أسعار الصرف', keywords: 'exchange rates, Moubien Kayali' }},
       { path: 'tools', component: ToolsComponent, data: { title: 'الأدوات - Moubien Kayali', description: 'أدوات مفيدة للتحويل والتنسيق', keywords: 'tools, converter, PDF' }}
+    ]
+  },
+  { path: 'login', component: LoginComponent, data: { title: 'Admin Login' } },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [authGuard],
+    children: [
+      { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: 'dashboard', component: DashboardComponent, data: { title: 'Admin Dashboard' } },
+      { path: 'posts', component: DashboardComponent, data: { title: 'Manage Posts' } }, // Placeholder
+      { path: 'projects', component: DashboardComponent, data: { title: 'Manage Projects' } }, // Placeholder
+      { path: 'settings', component: DashboardComponent, data: { title: 'Settings' } } // Placeholder
     ]
   },
   { path: '**', redirectTo: 'en/home' } // Wildcard route for handling unknown paths

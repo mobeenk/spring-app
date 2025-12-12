@@ -1,0 +1,31 @@
+<div class="dashboard">
+  <h2>Dashboard Overview</h2>
+  
+  <div class="stats-grid">
+    <div class="stat-card" *ngFor="let stat of stats">
+      <div class="stat-icon">{{ stat.icon }}</div>
+      <div class="stat-info">
+        <h3>{{ stat.value }}</h3>
+        <p>{{ stat.label }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="recent-activity">
+    <h3>Recent Activity</h3>
+    <div class="activity-list">
+      <div class="activity-item">
+        <span class="activity-date">2 hours ago</span>
+        <span class="activity-text">New contact form submission</span>
+      </div>
+      <div class="activity-item">
+        <span class="activity-date">5 hours ago</span>
+        <span class="activity-text">Project "Portfolio Redesign" updated</span>
+      </div>
+      <div class="activity-item">
+        <span class="activity-date">1 day ago</span>
+        <span class="activity-text">New blog post published</span>
+      </div>
+    </div>
+  </div>
+</div>

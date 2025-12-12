@@ -1,0 +1,136 @@
+.admin-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.admin-header {
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #e9913f;
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 5px;
+  }
+
+  p {
+    color: #666;
+    font-size: 1rem;
+  }
+
+  .btn-logout {
+    background: #d32f2f;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: #b71c1c;
+      transform: translateY(-2px);
+    }
+  }
+}
+
+.admin-content {
+  display: flex;
+  gap: 30px;
+}
+
+.admin-sidebar {
+  flex: 0 0 220px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 20px 0;
+  height: fit-content;
+  position: sticky;
+  top: 70px;
+}
+
+.admin-menu {
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    li {
+      margin: 0;
+    }
+
+    a {
+      display: block;
+      padding: 12px 20px;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+
+      &:hover {
+        background-color: #efefef;
+        padding-left: 25px;
+      }
+
+      &.active {
+        background-color: #e9913f;
+        color: #fff;
+        border-left-color: #d97b2f;
+        font-weight: bold;
+        padding-left: 25px;
+      }
+    }
+  }
+}
+
+.admin-main {
+  flex: 1;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 500px;
+}
+
+// RTL Support
+[dir="rtl"] {
+  .admin-menu {
+    a {
+      border-left: none;
+      border-right: 3px solid transparent;
+
+      &:hover {
+        padding-left: 20px;
+        padding-right: 25px;
+      }
+
+      &.active {
+        border-left: none;
+        border-right-color: #d97b2f;
+        padding-left: 20px;
+        padding-right: 25px;
+      }
+    }
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .admin-content {
+    flex-direction: column;
+  }
+
+  .admin-sidebar {
+    flex: 0 0 auto;
+    position: static;
+  }
+}
