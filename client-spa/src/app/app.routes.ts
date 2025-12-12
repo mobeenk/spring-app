@@ -6,6 +6,7 @@ import { ExchangeRatesComponent } from './exchange-rates/exchange-rates.componen
 import { ToolsComponent } from './tools/tools.component';
 import { AdminComponent } from './admin/admin.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UsersComponent } from './admin/users/users.component';
 import { LoginComponent } from './auth/login.component';
 import { authGuard } from './auth/auth.guard';
 
@@ -39,6 +40,7 @@ export const routes: Routes = [
     children: [
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       { path: 'dashboard', component: DashboardComponent, data: { title: 'Admin Dashboard' } },
+      { path: 'users', component: UsersComponent, data: { title: 'User Management' } },
       { path: 'posts', component: DashboardComponent, data: { title: 'Manage Posts' } }, // Placeholder
       { path: 'projects', component: DashboardComponent, data: { title: 'Manage Projects' } }, // Placeholder
       { path: 'settings', component: DashboardComponent, data: { title: 'Settings' } } // Placeholder
