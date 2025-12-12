@@ -68,8 +68,48 @@ public class UserInfoService implements UserDetailsService {
             _userRepository.save(user);
         });
     }
-//    @Transactional
-//    public void deleteUserByName(String username) {
-//        _userRepository.deleteByName(username);
-//    }
+
+    public boolean updatePassword(String username, String oldPassword, String newPassword) {
+        Optional<UserInfo> userOpt = _userRepository.findByName(username);
+        
+        if (userOpt.isEmpty()) {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
+        
+        UserInfo user = userOpt.get();
+        
+        // Verify old password
+        if (!encoder.matches(oldPassword, user.getPassword())) {
+            return false;
+        }
+        
+        // Update to new password
+        user.setPassword(encoder.encode(newPassword));
+        _userRepository.save(user);
+        return true;
+    }
+
+    public java.util.List<UserInfo> getAllUsers() {
+        return _userRepository.findAll();
+    }
+
+    public UserInfo updateUserInfo(String username, String newEmail, String newRoles) {
+        Optional<UserInfo> userOpt = _userRepository.findByName(username);
+        
+        if (userOpt.isEmpty()) {
+            throw new UsernameNotFoundException("User not found: " + username);
+        }
+        
+        UserInfo user = userOpt.get();
+        
+        if (newEmail != null && !newEmail.trim().isEmpty()) {
+            user.setEmail(newEmail);
+        }
+        
+        if (newRoles != null && !newRoles.trim().isEmpty()) {
+            user.setRoles(newRoles);
+        }
+        
+        return _userRepository.save(user);
+    }
 }

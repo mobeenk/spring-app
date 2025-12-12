@@ -126,6 +126,54 @@ public class UserController {
         }
     }
 
+    @GetMapping("/admin/users")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<java.util.List<UserInfo>> getAllUsers() {
+        java.util.List<UserInfo> users = userInfoService.getAllUsers();
+        // Remove passwords from response for security
+        users.forEach(user -> user.setPassword(null));
+        return ResponseEntity.ok(users);
+    }
+
+    @PutMapping("/admin/update-user")
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    public ResponseEntity<?> updateUser(@RequestBody com.example.mywebapi.entity.UserUpdateRequest request) {
+        try {
+            UserInfo updatedUser = userInfoService.updateUserInfo(
+                request.getUsername(),
+                request.getEmail(),
+                request.getRoles()
+            );
+            updatedUser.setPassword(null); // Don't send password back
+            return ResponseEntity.ok(updatedUser);
+        } catch (UsernameNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("{\"error\": \"User not found\"}");
+        }
+    }
+
+    @PutMapping("/user/change-password")
+    @PreAuthorize("hasAnyAuthority('ROLE_USER', 'ROLE_ADMIN')")
+    public ResponseEntity<String> changePassword(@RequestBody com.example.mywebapi.entity.PasswordChangeRequest request) {
+        try {
+            boolean success = userInfoService.updatePassword(
+                request.getUsername(), 
+                request.getOldPassword(), 
+                request.getNewPassword()
+            );
+            
+            if (success) {
+                return ResponseEntity.ok("Password updated successfully");
+            } else {
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body("Old password is incorrect");
+            }
+        } catch (UsernameNotFoundException ex) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("User not found");
+        }
+    }
+
     @ExceptionHandler(ResponseStatusException.class)
     public ResponseEntity<String> handleResponseStatusException(ResponseStatusException ex) {
         return new ResponseEntity<>(ex.getReason(), ex.getStatusCode());
