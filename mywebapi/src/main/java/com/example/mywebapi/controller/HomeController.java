@@ -35,12 +35,12 @@ public class HomeController {
         return ResponseEntity.ok().body("{\"message\": \"" + message + "\"}");
     }
     @GetMapping("/exchange-rates")
-//    @RateLimited
+   @RateLimited
     public ExchangeRateDTO getExchangeRates(@RequestParam String currency) {
         return exchangeRateService.getExchangeRates(currency);
     }
     @GetMapping("/crypto-metals-rate")
-//    @RateLimited
+   @RateLimited
     public CryptoAndMetalsResponse getCryptoMetals(@RequestParam String currency) {
         return switch (currency) {
             case "XAU" -> exchangeRateService.getGoldRate(currency);

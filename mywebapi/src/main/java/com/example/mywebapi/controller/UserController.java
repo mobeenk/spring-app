@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import com.example.mywebapi.aspect.RateLimited;
 import java.util.Set;
 
 @RestController
@@ -87,6 +88,7 @@ public class UserController {
     }
 
     @PostMapping("/generateToken")
+    @RateLimited
     public String authenticateAndGetToken(@RequestBody AuthRequest authRequest) {
         Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(authRequest.getUsername(), authRequest.getPassword()));
         if (authentication.isAuthenticated()) {
