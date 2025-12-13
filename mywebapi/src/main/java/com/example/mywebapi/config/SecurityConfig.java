@@ -59,6 +59,7 @@ public class SecurityConfig implements WebMvcConfigurer {
                                        "/auth/forgot-password", "/auth/reset-password").permitAll()
                         .requestMatchers("/home/**").permitAll()
                         .requestMatchers("/documents/**").permitAll()
+                        .requestMatchers("/contact/**").permitAll()
                         .requestMatchers("/auth/user/**").authenticated()
                         .requestMatchers("/auth/admin/**").authenticated()
                         .anyRequest().authenticated())

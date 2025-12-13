@@ -82,6 +82,18 @@
     margin-bottom: 15px;
     border-radius: 5px;
     border: 1px solid #555;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+
+    &:disabled {
+      background-color: #444;
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    &:focus:not(:disabled) {
+      outline: none;
+      border-color: var(--color-orange-title);
+    }
   }
   
   .contact-form button {
@@ -91,11 +103,16 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
   }
   
-  .contact-form button:hover {
+  .contact-form button:hover:not(:disabled) {
     background-color: #e9913f;
+  }
+
+  .contact-form button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
   }
 
   @media only screen and (max-width: 768px) {
