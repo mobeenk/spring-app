@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-forgot-password',
@@ -15,7 +16,7 @@ import { ToastrService } from 'ngx-toastr';
 export class ForgotPasswordComponent {
   email: string = '';
   isLoading: boolean = false;
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = `${environment.baseUrl}auth`;
 
   constructor(
     private http: HttpClient,

@@ -47,8 +47,9 @@ public class ContactController {
             return ResponseEntity.ok("Thank you for your message. We'll get back to you soon!");
 
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body("Failed to send message. Please try again later.");
+                    .body("Failed to send message: " + e.getMessage());
         }
     }
 

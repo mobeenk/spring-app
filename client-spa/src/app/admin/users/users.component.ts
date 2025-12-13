@@ -5,6 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from '../../auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { isPlatformBrowser } from '@angular/common';
+import { environment } from '../../../environments/environment';
 
 interface UserInfo {
   id: number;
@@ -23,7 +24,7 @@ interface UserInfo {
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = `${environment.baseUrl}auth`;
   users: UserInfo[] = [];
   filteredUsers: UserInfo[] = [];
   paginatedUsers: UserInfo[] = [];

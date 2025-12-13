@@ -4,6 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { I18nService } from '../services/i18n.service';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-tools',
@@ -18,7 +19,7 @@ export class ToolsComponent {
   selectedFile: File | null = null;
   isConverting: boolean = false;
   dragOver: boolean = false;
-  private apiUrl = 'http://localhost:8080/documents';
+  private apiUrl = `${environment.baseUrl}documents`;
 
   constructor(
     public i18nService: I18nService,

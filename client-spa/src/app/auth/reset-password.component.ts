@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute, RouterLink } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-reset-password',
@@ -20,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
   isLoading: boolean = false;
   showPassword: boolean = false;
   showConfirmPassword: boolean = false;
-  private apiUrl = 'http://localhost:8080/auth';
+  private apiUrl = `${environment.baseUrl}auth`;
 
   constructor(
     private http: HttpClient,

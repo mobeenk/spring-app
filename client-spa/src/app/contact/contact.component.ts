@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { CanonicalService } from '../services/canonical.service';
+import { environment } from '../../environments/environment';
 
 interface ContactForm {
   name: string;
@@ -26,7 +27,7 @@ export class ContactComponent implements OnInit {
     message: ''
   };
   isSubmitting: boolean = false;
-  private apiUrl = 'http://localhost:8080/contact/submit';
+  private apiUrl = `${environment.baseUrl}contact/submit`;
 
   constructor(
     private canonicalService: CanonicalService,
