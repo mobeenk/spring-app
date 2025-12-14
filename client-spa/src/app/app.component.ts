@@ -17,6 +17,7 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AppComponent implements AfterViewInit {
   currentLanguage: string;
+  currentYear: number = new Date().getFullYear();
 
   constructor(
     public i18nService: I18nService,
