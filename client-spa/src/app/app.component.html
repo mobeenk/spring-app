@@ -15,9 +15,18 @@
           </li>
           <li><a [routerLink]="getRouterLink('contact')" routerLinkActive="active">{{ 'CONTACT' | translate }}</a></li>
         </ul>
-        <div class="lang-switcher" [ngClass]="{'rtl': i18nService.currentDirection === 'rtl', 'ltr': i18nService.currentDirection === 'ltr'}">
-          <button class="lang-btn" [class.active]="currentLanguage === 'en'" (click)="switchLanguage('en')" aria-label="Switch to English">English</button>
-          <button class="lang-btn" [class.active]="currentLanguage === 'ar'" (click)="switchLanguage('ar')" aria-label="Switch to Arabic">العربية</button>
+        <div class="header-right">
+          <div class="weather-widget" *ngIf="weather">
+            <span class="weather-emoji">{{weather.icon}}</span>
+            <div class="weather-info">
+              <span class="weather-temp">{{weather.temp}}°C</span>
+              <span class="weather-location">{{weather.location}}</span>
+            </div>
+          </div>
+          <div class="lang-switcher">
+            <button class="lang-btn" [class.active]="currentLanguage === 'en'" (click)="switchLanguage('en')" aria-label="Switch to English">English</button>
+            <button class="lang-btn" [class.active]="currentLanguage === 'ar'" (click)="switchLanguage('ar')" aria-label="Switch to Arabic">العربية</button>
+          </div>
         </div>
       </nav>
     </header>
