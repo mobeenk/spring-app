@@ -1,0 +1,111 @@
+<div class="tool-panel">
+  <div class="formatter-container">
+    <div class="input-section">
+      <div class="section-header">
+        <h3>Input Text</h3>
+        <button class="btn-secondary" (click)="clearText()">Clear</button>
+      </div>
+      <textarea 
+        [(ngModel)]="textInput" 
+        (ngModelChange)="updateTextStats()"
+        placeholder="Paste or type your text here..."
+        rows="12"
+        class="code-textarea"></textarea>
+    </div>
+
+    <!-- Text Statistics -->
+    <div class="text-stats">
+      <div class="stat-item">
+        <span class="stat-label">Words:</span>
+        <span class="stat-value">{{ wordCount }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Characters:</span>
+        <span class="stat-value">{{ charCount }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Characters (no spaces):</span>
+        <span class="stat-value">{{ charCountNoSpaces }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Lines:</span>
+        <span class="stat-value">{{ lineCount }}</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">Sentences:</span>
+        <span class="stat-value">{{ sentenceCount }}</span>
+      </div>
+    </div>
+
+    <!-- Case Conversion -->
+    <div class="text-section">
+      <h3>Case Conversion</h3>
+      <div class="actions">
+        <button class="btn-action" (click)="convertToUpperCase()" [disabled]="!textInput">
+          <span class="icon">🔠</span> UPPERCASE
+        </button>
+        <button class="btn-action" (click)="convertToLowerCase()" [disabled]="!textInput">
+          <span class="icon">🔡</span> lowercase
+        </button>
+        <button class="btn-action" (click)="convertToTitleCase()" [disabled]="!textInput">
+          <span class="icon">🔤</span> Title Case
+        </button>
+        <button class="btn-action" (click)="convertToSentenceCase()" [disabled]="!textInput">
+          <span class="icon">📝</span> Sentence case
+        </button>
+      </div>
+    </div>
+
+    <!-- Text Formatting -->
+    <div class="text-section">
+      <h3>Text Formatting</h3>
+      <div class="actions">
+        <button class="btn-action" (click)="removeExtraSpaces()" [disabled]="!textInput">
+          <span class="icon">🧹</span> Remove Extra Spaces
+        </button>
+        <button class="btn-action" (click)="removeLineBreaks()" [disabled]="!textInput">
+          <span class="icon">📏</span> Remove Line Breaks
+        </button>
+        <button class="btn-action" (click)="reverseText()" [disabled]="!textInput">
+          <span class="icon">🔄</span> Reverse Text
+        </button>
+        <button class="btn-action" (click)="copyToClipboard()" [disabled]="!textInput">
+          <span class="icon">📋</span> Copy
+        </button>
+      </div>
+    </div>
+
+    <!-- Lorem Ipsum Generator -->
+    <div class="text-section">
+      <h3>Lorem Ipsum Generator</h3>
+      <div class="lorem-controls">
+        <div class="lorem-input-group">
+          <label for="paragraphs">Paragraphs:</label>
+          <input 
+            type="number" 
+            id="paragraphs"
+            [(ngModel)]="loremParagraphs" 
+            min="1" 
+            max="20"
+            class="lorem-input">
+          <button class="btn-action" (click)="generateLoremIpsum('paragraphs')">
+            <span class="icon">📄</span> Generate Paragraphs
+          </button>
+        </div>
+        <div class="lorem-input-group">
+          <label for="words">Words:</label>
+          <input 
+            type="number" 
+            id="words"
+            [(ngModel)]="loremWords" 
+            min="10" 
+            max="500"
+            class="lorem-input">
+          <button class="btn-action" (click)="generateLoremIpsum('words')">
+            <span class="icon">✍️</span> Generate Words
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

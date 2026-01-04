@@ -1,0 +1,107 @@
+@import '../tools-shared.scss';
+
+.text-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+  margin: 20px 0;
+
+  .stat-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    padding: 10px 15px;
+    border-radius: 6px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+
+    .stat-label {
+      font-weight: 500;
+      color: #666;
+    }
+
+    .stat-value {
+      font-weight: 700;
+      color: #e9913f;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+.text-section {
+  margin: 25px 0;
+
+  h3 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #e9913f;
+  }
+}
+
+.lorem-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.lorem-input-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+
+  label {
+    font-weight: 600;
+    color: #333;
+    min-width: 90px;
+  }
+
+  .lorem-input {
+    width: 100px;
+    padding: 8px 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s;
+
+    &:focus {
+      outline: none;
+      border-color: #007bff;
+    }
+  }
+
+  .btn-action {
+    flex: 1;
+    min-width: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .text-stats {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .lorem-input-group {
+    flex-direction: column;
+    align-items: stretch;
+
+    label {
+      min-width: auto;
+    }
+
+    .lorem-input {
+      width: 100%;
+    }
+
+    .btn-action {
+      width: 100%;
+      min-width: auto;
+    }
+  }
+}

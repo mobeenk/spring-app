@@ -1,0 +1,47 @@
+<div class="tool-panel">
+  <h2>{{ isWordToPdf ? ('Word_to_PDF' | translate) : 'PDF to Word Converter' }}</h2>
+  <p>{{ isWordToPdf ? ('word_pdf_desc' | translate) : 'Convert PDF documents to editable Word format' }}</p>
+  
+  <div class="converter-container">
+    <div 
+      class="drop-zone" 
+      [class.drag-over]="dragOver"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onDrop($event)"
+      *ngIf="!selectedFile">
+      <div class="drop-zone-content">
+        <span class="upload-icon">{{ isWordToPdf ? '📤' : '📥' }}</span>
+        <h3>Drag & Drop your {{ isWordToPdf ? 'Word document' : 'PDF document' }} here</h3>
+        <p>or</p>
+        <label class="btn-upload">
+          <input 
+            type="file" 
+            [accept]="acceptedFormats" 
+            (change)="onFileSelected($event)"
+            hidden
+          />
+          Browse Files
+        </label>
+        <small>Supported formats: {{ formatDescription }}</small>
+      </div>
+    </div>
+
+    <div class="file-preview" *ngIf="selectedFile">
+      <div class="file-info">
+        <span class="file-icon">{{ getFileIcon() }}</span>
+        <div class="file-details">
+          <h4>{{ selectedFile.name }}</h4>
+          <p>{{ formatFileSize(selectedFile.size) }}</p>
+        </div>
+        <button class="btn-remove" (click)="clearFile()" [disabled]="isConverting">✕</button>
+      </div>
+      <button 
+        class="btn-convert" 
+        (click)="convertDocument()" 
+        [disabled]="isConverting">
+        {{ isConverting ? 'Converting...' : (isWordToPdf ? 'Convert to PDF' : 'Convert to Word') }}
+      </button>
+    </div>
+  </div>
+</div>

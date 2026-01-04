@@ -1,0 +1,61 @@
+<div class="tool-panel">
+  <h2>{{ 'Image_Converter' | translate }}</h2>
+  <p>{{ 'image_converter_desc' | translate }}</p>
+  
+  <div class="converter-container">
+    <div 
+      class="drop-zone" 
+      [class.drag-over]="dragOver"
+      (dragover)="onDragOver($event)"
+      (dragleave)="onDragLeave($event)"
+      (drop)="onImageDrop($event)"
+      *ngIf="!selectedImage">
+      <div class="drop-zone-content">
+        <span class="upload-icon">🖼️</span>
+        <h3>Drag & Drop your image here</h3>
+        <p>or</p>
+        <label class="btn-upload">
+          <input 
+            type="file" 
+            accept="image/*" 
+            (change)="onImageSelected($event)"
+            hidden
+          />
+          Browse Files
+        </label>
+        <small>Supported formats: JPG, PNG, GIF, BMP, WebP</small>
+      </div>
+    </div>
+
+    <div class="file-preview" *ngIf="selectedImage">
+      <div class="image-preview-container" *ngIf="imagePreview">
+        <img [src]="imagePreview" alt="Preview" class="image-preview">
+      </div>
+      <div class="file-info">
+        <span class="file-icon">🖼️</span>
+        <div class="file-details">
+          <h4>{{ selectedImage.name }}</h4>
+          <p>{{ formatFileSize(selectedImage.size) }}</p>
+        </div>
+        <button class="btn-remove" (click)="clearImage()" [disabled]="isConverting">✕</button>
+      </div>
+      
+      <div class="format-selector">
+        <label for="outputFormat">Convert to:</label>
+        <select id="outputFormat" [(ngModel)]="outputFormat" class="format-select">
+          <option value="png">PNG</option>
+          <option value="jpeg">JPEG</option>
+          <option value="webp">WebP</option>
+          <option value="bmp">BMP</option>
+        </select>
+      </div>
+      
+      <button 
+        class="btn-convert" 
+        (click)="convertImage()" 
+        [disabled]="isConverting">
+        {{ isConverting ? 'Converting...' : 'Convert Image' }}
+      </button>
+    </div>
+  </div>
+</div>

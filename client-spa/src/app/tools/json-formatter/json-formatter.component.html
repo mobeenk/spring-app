@@ -1,0 +1,49 @@
+<div class="tool-panel">
+  <h2>{{ 'JSON_Formatter' | translate }}</h2>
+  <p>{{ 'json_formatter_desc' | translate }}</p>
+  
+  <div class="formatter-container">
+    <div class="input-section">
+      <div class="section-header">
+        <h3>Input JSON</h3>
+        <button class="btn-secondary" (click)="clearJson()">Clear</button>
+      </div>
+      <textarea 
+        [(ngModel)]="jsonInput" 
+        placeholder="Paste your JSON here..."
+        rows="15"
+        class="code-textarea"
+        [class.invalid]="!isValidJson && jsonInput"></textarea>
+      <div class="error-message" *ngIf="jsonError">
+        <span class="error-icon">⚠️</span> {{ jsonError }}
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-action" (click)="formatJson()" [disabled]="!jsonInput">
+        <span class="icon">✨</span> Format
+      </button>
+      <button class="btn-action" (click)="minifyJson()" [disabled]="!jsonInput">
+        <span class="icon">🗜️</span> Minify
+      </button>
+      <button class="btn-action" (click)="validateJson()" [disabled]="!jsonInput">
+        <span class="icon">✓</span> Validate
+      </button>
+      <button class="btn-action" (click)="copyToClipboard()" [disabled]="!jsonOutput && !jsonInput">
+        <span class="icon">📋</span> Copy
+      </button>
+    </div>
+
+    <div class="output-section" *ngIf="jsonOutput">
+      <div class="section-header">
+        <h3>Output JSON</h3>
+        <span class="success-badge" *ngIf="isValidJson">✓ Valid</span>
+      </div>
+      <textarea 
+        [(ngModel)]="jsonOutput" 
+        readonly
+        rows="15"
+        class="code-textarea output"></textarea>
+    </div>
+  </div>
+</div>

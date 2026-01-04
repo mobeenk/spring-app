@@ -1,0 +1,95 @@
+<div class="tool-panel">
+  <h2>GUID Converter</h2>
+  <p>Convert GUIDs (Globally Unique Identifiers) / UUIDs to various formats</p>
+  
+  <div class="guid-container">
+    <div class="guid-converter-section top-section">
+      <h3>Enter GUID</h3>
+      <p>Enter a GUID to convert it to different formats</p>
+      
+      <div class="converter-input-group">
+        <input 
+          type="text" 
+          [(ngModel)]="guidInput"
+          placeholder="Enter GUID, e.g. {7330F811-F47F-41BC-A4FF-E792D073F41F}"
+          class="guid-converter-input"
+          (keyup.enter)="parseGuidInput()">
+        <div class="converter-buttons">
+          <button class="btn-convert-guid" (click)="parseGuidInput()">
+            <span class="icon">🔄</span> Convert
+          </button>
+          <button class="btn-clear-converter" (click)="clearGuidConverter()">
+            <span class="icon">🗑️</span> Clear
+          </button>
+        </div>
+      </div>
+
+      <div class="error-message" *ngIf="guidInputError">
+        <span class="error-icon">⚠️</span> {{ guidInputError }}
+      </div>
+
+      <div class="parsed-results" *ngIf="parsedGuid">
+        <div class="parsed-item">
+          <div class="parsed-label">Standard:</div>
+          <div class="parsed-value-group">
+            <code class="parsed-value">{{ parsedGuid.standard }}</code>
+            <button class="btn-copy-parsed" (click)="copyParsedValue(parsedGuid.standard)" title="Copy">📋</button>
+          </div>
+        </div>
+
+        <div class="parsed-item">
+          <div class="parsed-label">With Braces:</div>
+          <div class="parsed-value-group">
+            <code class="parsed-value">{{ parsedGuid.withBraces }}</code>
+            <button class="btn-copy-parsed" (click)="copyParsedValue(parsedGuid.withBraces)" title="Copy">📋</button>
+          </div>
+        </div>
+
+        <div class="parsed-item">
+          <div class="parsed-label">With Parentheses:</div>
+          <div class="parsed-value-group">
+            <code class="parsed-value">{{ parsedGuid.withParentheses }}</code>
+            <button class="btn-copy-parsed" (click)="copyParsedValue(parsedGuid.withParentheses)" title="Copy">📋</button>
+          </div>
+        </div>
+
+        <div class="parsed-item">
+          <div class="parsed-label">Hex:</div>
+          <div class="parsed-value-group">
+            <code class="parsed-value">{{ parsedGuid.hex }}</code>
+            <button class="btn-copy-parsed" (click)="copyParsedValue(parsedGuid.hex)" title="Copy">📋</button>
+          </div>
+        </div>
+
+        <div class="parsed-item">
+          <div class="parsed-label">Int:</div>
+          <div class="parsed-value-group">
+            <code class="parsed-value">{{ parsedGuid.int }}</code>
+            <button class="btn-copy-parsed" (click)="copyParsedValue(parsedGuid.int)" title="Copy">📋</button>
+          </div>
+        </div>
+
+        <div class="parsed-item">
+          <div class="parsed-label">Base64:</div>
+          <div class="parsed-value-group">
+            <code class="parsed-value">{{ parsedGuid.base64 }}</code>
+            <button class="btn-copy-parsed" (click)="copyParsedValue(parsedGuid.base64)" title="Copy">📋</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="guid-info" *ngIf="!parsedGuid">
+      <div class="info-box">
+        <h3>About GUIDs</h3>
+        <p>A GUID (Globally Unique Identifier) or UUID (Universally Unique Identifier) is a 128-bit number used to identify information in computer systems.</p>
+        <ul>
+          <li>Standard format: 8-4-4-4-12 hexadecimal digits</li>
+          <li>Example: <code>550e8400-e29b-41d4-a716-446655440000</code></li>
+          <li>Version 4 (random) GUIDs are generated using random numbers</li>
+          <li>Extremely low probability of collision</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

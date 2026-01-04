@@ -56,394 +56,45 @@
               {{ 'Image_Converter' | translate }}
             </a>
           </li>
+          <li>
+            <a 
+              (click)="selectTool('guid-generator')" 
+              [class.active]="selectedTool === 'guid-generator'"
+              class="tool-link">
+              GUID Converter
+            </a>
+          </li>
         </ul>
       </nav>
     </aside>
 
     <main class="tools-main">
-      <!-- Word to PDF Tool -->
-      <div *ngIf="selectedTool === 'word-to-pdf'" class="tool-panel">
-        <h2>{{ 'Word_to_PDF' | translate }}</h2>
-        <p>{{ 'word_pdf_desc' | translate }}</p>
-        
-        <div class="converter-container">
-          <div 
-            class="drop-zone" 
-            [class.drag-over]="dragOver"
-            (dragover)="onDragOver($event)"
-            (dragleave)="onDragLeave($event)"
-            (drop)="onDrop($event)"
-            *ngIf="!selectedFile">
-            <div class="drop-zone-content">
-              <span class="upload-icon">📤</span>
-              <h3>Drag & Drop your Word document here</h3>
-              <p>or</p>
-              <label class="btn-upload">
-                <input 
-                  type="file" 
-                  accept=".doc,.docx" 
-                  (change)="onFileSelected($event)"
-                  hidden
-                />
-                Browse Files
-              </label>
-              <small>Supported formats: .doc, .docx</small>
-            </div>
-          </div>
-
-          <div class="file-preview" *ngIf="selectedFile">
-            <div class="file-info">
-              <span class="file-icon">{{ getFileIcon() }}</span>
-              <div class="file-details">
-                <h4>{{ selectedFile.name }}</h4>
-                <p>{{ formatFileSize(selectedFile.size) }}</p>
-              </div>
-              <button class="btn-remove" (click)="clearFile()" [disabled]="isConverting">✕</button>
-            </div>
-            <button 
-              class="btn-convert" 
-              (click)="convertDocument()" 
-              [disabled]="isConverting">
-              {{ isConverting ? 'Converting...' : 'Convert to PDF' }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- PDF to Word Tool -->
-      <div *ngIf="selectedTool === 'pdf-to-word'" class="tool-panel">
-        <h2>PDF to Word Converter</h2>
-        <p>Convert PDF documents to editable Word format</p>
-        
-        <div class="converter-container">
-          <div 
-            class="drop-zone" 
-            [class.drag-over]="dragOver"
-            (dragover)="onDragOver($event)"
-            (dragleave)="onDragLeave($event)"
-            (drop)="onDrop($event)"
-            *ngIf="!selectedFile">
-            <div class="drop-zone-content">
-              <span class="upload-icon">📥</span>
-              <h3>Drag & Drop your PDF document here</h3>
-              <p>or</p>
-              <label class="btn-upload">
-                <input 
-                  type="file" 
-                  accept=".pdf" 
-                  (change)="onFileSelected($event)"
-                  hidden
-                />
-                Browse Files
-              </label>
-              <small>Supported format: .pdf</small>
-            </div>
-          </div>
-
-          <div class="file-preview" *ngIf="selectedFile">
-            <div class="file-info">
-              <span class="file-icon">{{ getFileIcon() }}</span>
-              <div class="file-details">
-                <h4>{{ selectedFile.name }}</h4>
-                <p>{{ formatFileSize(selectedFile.size) }}</p>
-              </div>
-              <button class="btn-remove" (click)="clearFile()" [disabled]="isConverting">✕</button>
-            </div>
-            <button 
-              class="btn-convert" 
-              (click)="convertDocument()" 
-              [disabled]="isConverting">
-              {{ isConverting ? 'Converting...' : 'Convert to Word' }}
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Image Converter Tool -->
-      <div *ngIf="selectedTool === 'image-converter'" class="tool-panel">
-        <h2>{{ 'Image_Converter' | translate }}</h2>
-        <p>{{ 'image_converter_desc' | translate }}</p>
-        
-        <div class="converter-container">
-          <div 
-            class="drop-zone" 
-            [class.drag-over]="dragOver"
-            (dragover)="onDragOver($event)"
-            (dragleave)="onDragLeave($event)"
-            (drop)="onImageDrop($event)"
-            *ngIf="!selectedImage">
-            <div class="drop-zone-content">
-              <span class="upload-icon">🖼️</span>
-              <h3>Drag & Drop your image here</h3>
-              <p>or</p>
-              <label class="btn-upload">
-                <input 
-                  type="file" 
-                  accept="image/*" 
-                  (change)="onImageSelected($event)"
-                  hidden
-                />
-                Browse Files
-              </label>
-              <small>Supported formats: JPG, PNG, GIF, BMP, WebP</small>
-            </div>
-          </div>
-
-          <div class="file-preview" *ngIf="selectedImage">
-            <div class="image-preview-container" *ngIf="imagePreview">
-              <img [src]="imagePreview" alt="Preview" class="image-preview">
-            </div>
-            <div class="file-info">
-              <span class="file-icon">🖼️</span>
-              <div class="file-details">
-                <h4>{{ selectedImage.name }}</h4>
-                <p>{{ formatFileSize(selectedImage.size) }}</p>
-              </div>
-              <button class="btn-remove" (click)="clearImage()" [disabled]="isConvertingImage">✕</button>
-            </div>
-            
-            <div class="format-selector">
-              <label for="outputFormat">Convert to:</label>
-              <select id="outputFormat" [(ngModel)]="outputFormat" class="format-select">
-                <option value="png">PNG</option>
-                <option value="jpeg">JPEG</option>
-                <option value="webp">WebP</option>
-                <option value="bmp">BMP</option>
-              </select>
-            </div>
-            
-            <button 
-              class="btn-convert" 
-              (click)="convertImage()" 
-              [disabled]="isConvertingImage">
-              {{ isConvertingImage ? 'Converting...' : 'Convert Image' }}
-            </button>
-          </div>
-        </div>
-      </div>
-
       <!-- Text Tools -->
-      <div *ngIf="selectedTool === 'text-tools'" class="tool-panel">
-        <!-- <h2>{{ 'Text_Tools' | translate }}</h2> -->
-        <!-- <p>{{ 'text_tools_desc' | translate }}</p>
-        <div class="tool-feature">
-          <p>✓ {{ 'feature_case_converter' | translate }}</p>
-          <p>✓ {{ 'feature_word_counter' | translate }}</p>
-          <p>✓ {{ 'feature_text_formatter' | translate }}</p>
-        </div> -->
-        
-        <div class="json-formatter-container">
-          <div class="json-section">
-            <div class="section-header">
-              <h3>Input Text</h3>
-              <button class="btn-secondary" (click)="clearText()">Clear</button>
-            </div>
-            <textarea 
-              [(ngModel)]="textInput" 
-              (ngModelChange)="updateTextStats()"
-              placeholder="Paste or type your text here..."
-              rows="12"
-              class="json-textarea"></textarea>
-          </div>
+      <app-text-tools *ngIf="selectedTool === 'text-tools'"></app-text-tools>
 
-          <!-- Text Statistics -->
-          <div class="text-stats">
-            <div class="stat-item">
-              <span class="stat-label">Words:</span>
-              <span class="stat-value">{{ wordCount }}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">Characters:</span>
-              <span class="stat-value">{{ charCount }}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">Characters (no spaces):</span>
-              <span class="stat-value">{{ charCountNoSpaces }}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">Lines:</span>
-              <span class="stat-value">{{ lineCount }}</span>
-            </div>
-            <div class="stat-item">
-              <span class="stat-label">Sentences:</span>
-              <span class="stat-value">{{ sentenceCount }}</span>
-            </div>
-          </div>
+      <!-- JSON Formatter -->
+      <app-json-formatter *ngIf="selectedTool === 'json-formatter'"></app-json-formatter>
 
-          <!-- Case Conversion -->
-          <div class="text-section">
-            <h3>Case Conversion</h3>
-            <div class="json-actions">
-              <button class="btn-action" (click)="convertToUpperCase()" [disabled]="!textInput">
-                <span class="icon">🔠</span> UPPERCASE
-              </button>
-              <button class="btn-action" (click)="convertToLowerCase()" [disabled]="!textInput">
-                <span class="icon">🔡</span> lowercase
-              </button>
-              <button class="btn-action" (click)="convertToTitleCase()" [disabled]="!textInput">
-                <span class="icon">🔤</span> Title Case
-              </button>
-              <button class="btn-action" (click)="convertToSentenceCase()" [disabled]="!textInput">
-                <span class="icon">📝</span> Sentence case
-              </button>
-            </div>
-          </div>
+      <!-- XML Formatter -->
+      <app-xml-formatter *ngIf="selectedTool === 'xml-formatter'"></app-xml-formatter>
 
-          <!-- Text Formatting -->
-          <div class="text-section">
-            <h3>Text Formatting</h3>
-            <div class="json-actions">
-              <button class="btn-action" (click)="removeExtraSpaces()" [disabled]="!textInput">
-                <span class="icon">🧹</span> Remove Extra Spaces
-              </button>
-              <button class="btn-action" (click)="removeLineBreaks()" [disabled]="!textInput">
-                <span class="icon">📏</span> Remove Line Breaks
-              </button>
-              <button class="btn-action" (click)="reverseText()" [disabled]="!textInput">
-                <span class="icon">🔄</span> Reverse Text
-              </button>
-              <button class="btn-action" (click)="copyTextToClipboard()" [disabled]="!textInput">
-                <span class="icon">📋</span> Copy
-              </button>
-            </div>
-          </div>
+      <!-- Word to PDF -->
+      <app-document-converter 
+        *ngIf="selectedTool === 'word-to-pdf'" 
+        mode="word-to-pdf">
+      </app-document-converter>
 
-          <!-- Lorem Ipsum Generator -->
-          <div class="text-section">
-            <h3>Lorem Ipsum Generator</h3>
-            <div class="lorem-controls">
-              <div class="lorem-input-group">
-                <label for="paragraphs">Paragraphs:</label>
-                <input 
-                  type="number" 
-                  id="paragraphs"
-                  [(ngModel)]="loremParagraphs" 
-                  min="1" 
-                  max="20"
-                  class="lorem-input">
-                <button class="btn-action" (click)="generateLoremIpsum('paragraphs')">
-                  <span class="icon">📄</span> Generate Paragraphs
-                </button>
-              </div>
-              <div class="lorem-input-group">
-                <label for="words">Words:</label>
-                <input 
-                  type="number" 
-                  id="words"
-                  [(ngModel)]="loremWords" 
-                  min="10" 
-                  max="500"
-                  class="lorem-input">
-                <button class="btn-action" (click)="generateLoremIpsum('words')">
-                  <span class="icon">✍️</span> Generate Words
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <!-- PDF to Word -->
+      <app-document-converter 
+        *ngIf="selectedTool === 'pdf-to-word'" 
+        mode="pdf-to-word">
+      </app-document-converter>
 
-      <!-- JSON Formatter Tool -->
-      <div *ngIf="selectedTool === 'json-formatter'" class="tool-panel">
-        <h2>{{ 'JSON_Formatter' | translate }}</h2>
-        <p>{{ 'json_formatter_desc' | translate }}</p>
-        
-        <div class="json-formatter-container">
-          <div class="json-section">
-            <div class="section-header">
-              <h3>Input JSON</h3>
-              <button class="btn-secondary" (click)="clearJson()">Clear</button>
-            </div>
-            <textarea 
-              [(ngModel)]="jsonInput" 
-              placeholder="Paste your JSON here..."
-              rows="15"
-              class="json-textarea"
-              [class.invalid]="!isValidJson && jsonInput"></textarea>
-            <div class="error-message" *ngIf="jsonError">
-              <span class="error-icon">⚠️</span> {{ jsonError }}
-            </div>
-          </div>
+      <!-- Image Converter -->
+      <app-image-converter *ngIf="selectedTool === 'image-converter'"></app-image-converter>
 
-          <div class="json-actions">
-            <button class="btn-action" (click)="formatJson()" [disabled]="!jsonInput">
-              <span class="icon">✨</span> Format
-            </button>
-            <button class="btn-action" (click)="minifyJson()" [disabled]="!jsonInput">
-              <span class="icon">🗜️</span> Minify
-            </button>
-            <button class="btn-action" (click)="validateJson()" [disabled]="!jsonInput">
-              <span class="icon">✓</span> Validate
-            </button>
-            <button class="btn-action" (click)="copyToClipboard()" [disabled]="!jsonOutput && !jsonInput">
-              <span class="icon">📋</span> Copy
-            </button>
-          </div>
-
-          <div class="json-section" *ngIf="jsonOutput">
-            <div class="section-header">
-              <h3>Output JSON</h3>
-              <span class="success-badge" *ngIf="isValidJson">✓ Valid</span>
-            </div>
-            <textarea 
-              [(ngModel)]="jsonOutput" 
-              readonly
-              rows="15"
-              class="json-textarea output"></textarea>
-          </div>
-        </div>
-      </div>
-
-      <!-- XML Formatter Tool -->
-      <div *ngIf="selectedTool === 'xml-formatter'" class="tool-panel">
-        <h2>{{ 'XML_Formatter' | translate }}</h2>
-        <p>Format, minify, and validate XML documents</p>
-        
-        <div class="json-formatter-container">
-          <div class="json-section">
-            <div class="section-header">
-              <h3>Input XML</h3>
-              <button class="btn-secondary" (click)="clearXml()">Clear</button>
-            </div>
-            <textarea 
-              [(ngModel)]="xmlInput" 
-              placeholder="Paste your XML here..."
-              rows="15"
-              class="json-textarea"
-              [class.invalid]="!isValidXml && xmlInput"></textarea>
-            <div class="error-message" *ngIf="xmlError">
-              <span class="error-icon">⚠️</span> {{ xmlError }}
-            </div>
-          </div>
-
-          <div class="json-actions">
-            <button class="btn-action" (click)="formatXml()" [disabled]="!xmlInput">
-              <span class="icon">✨</span> Format
-            </button>
-            <button class="btn-action" (click)="minifyXml()" [disabled]="!xmlInput">
-              <span class="icon">🗜️</span> Minify
-            </button>
-            <button class="btn-action" (click)="validateXml()" [disabled]="!xmlInput">
-              <span class="icon">✓</span> Validate
-            </button>
-            <button class="btn-action" (click)="copyXmlToClipboard()" [disabled]="!xmlOutput && !xmlInput">
-              <span class="icon">📋</span> Copy
-            </button>
-          </div>
-
-          <div class="json-section" *ngIf="xmlOutput">
-            <div class="section-header">
-              <h3>Output XML</h3>
-              <span class="success-badge" *ngIf="isValidXml">✓ Valid</span>
-            </div>
-            <textarea 
-              [(ngModel)]="xmlOutput" 
-              readonly
-              rows="15"
-              class="json-textarea output"></textarea>
-          </div>
-        </div>
-      </div>
+      <!-- GUID Converter -->
+      <app-guid-converter *ngIf="selectedTool === 'guid-generator'"></app-guid-converter>
     </main>
   </div>
 </div>

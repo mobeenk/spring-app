@@ -1,0 +1,49 @@
+<div class="tool-panel">
+  <h2>{{ 'XML_Formatter' | translate }}</h2>
+  <p>Format, minify, and validate XML documents</p>
+  
+  <div class="formatter-container">
+    <div class="input-section">
+      <div class="section-header">
+        <h3>Input XML</h3>
+        <button class="btn-secondary" (click)="clearXml()">Clear</button>
+      </div>
+      <textarea 
+        [(ngModel)]="xmlInput" 
+        placeholder="Paste your XML here..."
+        rows="15"
+        class="code-textarea"
+        [class.invalid]="!isValidXml && xmlInput"></textarea>
+      <div class="error-message" *ngIf="xmlError">
+        <span class="error-icon">⚠️</span> {{ xmlError }}
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="btn-action" (click)="formatXml()" [disabled]="!xmlInput">
+        <span class="icon">✨</span> Format
+      </button>
+      <button class="btn-action" (click)="minifyXml()" [disabled]="!xmlInput">
+        <span class="icon">🗜️</span> Minify
+      </button>
+      <button class="btn-action" (click)="validateXml()" [disabled]="!xmlInput">
+        <span class="icon">✓</span> Validate
+      </button>
+      <button class="btn-action" (click)="copyToClipboard()" [disabled]="!xmlOutput && !xmlInput">
+        <span class="icon">📋</span> Copy
+      </button>
+    </div>
+
+    <div class="output-section" *ngIf="xmlOutput">
+      <div class="section-header">
+        <h3>Output XML</h3>
+        <span class="success-badge" *ngIf="isValidXml">✓ Valid</span>
+      </div>
+      <textarea 
+        [(ngModel)]="xmlOutput" 
+        readonly
+        rows="15"
+        class="code-textarea output"></textarea>
+    </div>
+  </div>
+</div>

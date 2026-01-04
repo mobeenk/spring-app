@@ -1,0 +1,251 @@
+@import '../tools-shared.scss';
+
+.guid-container {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.guid-converter-section {
+  background: #f8f9fa;
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+
+  &.top-section {
+    margin-top: 0;
+    padding-top: 25px;
+    border-top: none;
+  }
+
+  h3 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  p {
+    color: #666;
+    margin-bottom: 20px;
+  }
+
+  .converter-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+
+  .guid-converter-input {
+    flex: 1;
+    padding: 12px 15px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: 'Courier New', monospace;
+    transition: all 0.3s ease;
+
+    &:focus {
+      outline: none;
+      border-color: #e9913f;
+      box-shadow: 0 0 0 3px rgba(233, 145, 63, 0.1);
+    }
+
+    &::placeholder {
+      font-family: Arial, sans-serif;
+      color: #999;
+    }
+  }
+
+  .converter-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  .btn-convert-guid, .btn-clear-converter {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+
+    .icon {
+      margin-right: 5px;
+    }
+  }
+
+  .btn-convert-guid {
+    background: linear-gradient(135deg, #e9913f 0%, #d97b2f 100%);
+    color: white;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(233, 145, 63, 0.4);
+    }
+  }
+
+  .btn-clear-converter {
+    background: #6c757d;
+    color: white;
+
+    &:hover {
+      background: #5a6268;
+    }
+  }
+}
+
+.parsed-results {
+  background: #f8f9fa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 20px;
+
+  .parsed-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .parsed-label {
+      min-width: 140px;
+      font-weight: 600;
+      color: #333;
+      font-size: 0.95rem;
+    }
+
+    .parsed-value-group {
+      display: flex;
+      align-items: center;
+      flex: 1;
+      gap: 10px;
+    }
+
+    .parsed-value {
+      flex: 1;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      background: white;
+      padding: 8px 12px;
+      border-radius: 4px;
+      border: 1px solid #e0e0e0;
+      color: #333;
+      word-break: break-all;
+    }
+
+    .btn-copy-parsed {
+      padding: 8px 12px;
+      background: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
+
+      &:hover {
+        background: #218838;
+        transform: scale(1.05);
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+}
+
+.guid-info {
+  padding: 30px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  text-align: center;
+
+  .info-box {
+    max-width: 600px;
+    margin: 0 auto;
+
+    h3 {
+      font-size: 1.5rem;
+      color: #333;
+      margin-bottom: 15px;
+    }
+
+    p {
+      font-size: 1rem;
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 15px;
+    }
+
+    ul {
+      text-align: left;
+      list-style: none;
+      padding: 0;
+      margin-top: 20px;
+
+      li {
+        padding: 10px 15px;
+        margin-bottom: 8px;
+        background: white;
+        border-left: 3px solid #e9913f;
+        border-radius: 4px;
+        color: #555;
+
+        code {
+          background: #f8f9fa;
+          padding: 2px 6px;
+          border-radius: 3px;
+          font-family: 'Courier New', monospace;
+          font-size: 0.9rem;
+          color: #d97b2f;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .guid-container {
+    padding: 20px;
+  }
+
+  .guid-converter-section {
+    .converter-input-group {
+      flex-direction: column;
+    }
+
+    .guid-converter-input {
+      width: 100%;
+    }
+
+    .converter-buttons {
+      width: 100%;
+      flex-direction: column;
+
+      button {
+        width: 100%;
+      }
+    }
+
+    .parsed-item {
+      flex-direction: column;
+      align-items: flex-start;
+
+      .parsed-label {
+        min-width: auto;
+        margin-bottom: 5px;
+      }
+
+      .parsed-value {
+        word-break: break-all;
+      }
+    }
+  }
+}
